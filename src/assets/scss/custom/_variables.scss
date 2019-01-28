@@ -1,0 +1,36 @@
+$body-background: #000000;
+
+//  ==Colors\
+$default: #f58634;
+
+$primary: #0054db;
+$secondary: #282828;
+$success: #45bc00;
+$info: #3281ff;
+$warning: #f58634;
+$danger: #d51024;
+$white: #fff;
+
+// ==Button
+
+// ==Button Variant
+$btn-primary: (
+    color: #fff,
+    background: blue,
+    border: blue 
+);
+$btn-secondary: (
+    color: #fff,
+    background: #282828,
+    border: #282828
+);
+$btn-danger: (
+    color: #fff,
+    background: #d51024,
+    border: #d51024 
+);
+$btn-warning: (
+    color: #fff,
+    background: #f58634,
+    border: #f58634 
+);

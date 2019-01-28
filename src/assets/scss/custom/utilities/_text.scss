@@ -1,0 +1,69 @@
+// Text
+
+
+// == Text Size
+@mixin text-size {
+    @for $i from 10 through 50 {
+        .text-size-#{$i} {
+            font-size: #{$i}px !important;
+        }
+    }
+}
+@include text-size;
+
+// == Text Spacing
+@mixin text-spacing {
+    @for $i from 1 through 10 {
+        .text-spacing-#{$i} {
+            letter-spacing: #{$i / 2}px !important;
+        }
+    }
+}
+@include text-spacing;
+
+// == Text Weight
+.text-bold,
+.text-w700 {
+    font-weight: 700;
+}
+
+.text-semibold,
+.text-w600 {
+    font-weight: 600;
+}
+
+.text-medium,
+.text-w500 {
+    font-weight: 500;
+}
+
+.text-normal,
+.text-w400 {
+    font-weight: 400;
+}
+
+.text-light,
+.text-w300 {
+    font-weight: 300;
+}
+
+// == Text Format
+.text-underline {
+    text-decoration: underline;
+}
+
+.text-italic {
+    font-style: italic;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercse {
+    text-transform: lowercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}

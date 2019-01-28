@@ -1,0 +1,10 @@
+// Radius
+
+@mixin text-size {
+    @for $i from 1 through 20 {
+        .radius-#{$i} {
+            border-radius: #{$i}px !important;
+        }
+    }
+}
+@include text-size;

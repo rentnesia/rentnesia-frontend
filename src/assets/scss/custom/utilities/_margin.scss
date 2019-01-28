@@ -1,0 +1,21 @@
+@mixin margin-px {
+    @for $i from 1 through 200 {
+        .m-#{$i}px{
+            margin: #{$i}px !important;
+        }
+        .mt-#{$i}px{
+            margin-top: #{$i}px !important;
+        }
+        .mb-#{$i}px{
+            margin-bottom: #{$i}px !important;
+        }
+        .ml-#{$i}px{
+            margin-left: #{$i}px !important;
+        }
+        .mr-#{$i}px{
+            margin-right: #{$i}px !important;
+        }
+    }
+}
+
+@include margin-px;
