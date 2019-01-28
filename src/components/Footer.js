@@ -19,7 +19,11 @@ class Header extends React.Component {
   }
 
   render() {
-    return <div />;
+    return (
+      <div>
+        <h1>ini footer</h1>
+      </div>
+    );
   }
 }
 
