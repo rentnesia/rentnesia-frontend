@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3",
     "bootstrap": "4.2.1",
     "connected-react-router": "^6.2.1",
     "font-awesome": "^4.7.0",
@@ -12,6 +13,7 @@
     "popper.js": "^1.14.6",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-owl-carousel2": "^0.3.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",

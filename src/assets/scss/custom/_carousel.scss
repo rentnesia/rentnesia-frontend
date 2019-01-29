@@ -1,0 +1,23 @@
+#home-carousel {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.owl-nav {
+  position: absolute;
+  top: 50vh;
+  z-index: 7;
+  width: 100%;
+  height: 0;
+}
+
+.owl-nav .owl-prev {
+  position: absolute;
+  left: 0;
+}
+
+.owl-nav .owl-next {
+  position: absolute;
+  left: unset;
+  right: 0;
+}
