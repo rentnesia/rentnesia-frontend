@@ -1,0 +1,27 @@
+.navTabs {
+  justify-content: center;
+  border: none;
+  outline: none;
+}
+
+.switchNav_Item {
+  color: #707c8b;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.7em;
+  margin: 0 10px;
+  padding-bottom: 10px;
+}
+
+#switchNav_Item_Active {
+  color: black;
+}
+
+#switchNav_Item_Active.active {
+  border-bottom: 1px solid #db433e;
+}
+
+.FormField {
+  margin-bottom: 20px;
+}
+
