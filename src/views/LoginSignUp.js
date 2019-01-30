@@ -15,13 +15,20 @@ import {
   Col
 } from "reactstrap";
 
-
 import classnames from "classnames";
 
 class Container extends Component {
   constructor(props) {
     super(props);
-    this.state = { modal: false, activeTab: "1" };
+    this.state = {
+      modal: false,
+      activeTab: "1",
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      phoneNumber: ""
+    };
   }
 
   toggleModal = () => {
@@ -38,11 +45,28 @@ class Container extends Component {
     }
   };
 
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleConfirmPassword = event => {
+    if (event.target.value !== this.state.password) {
+      console.log("failed");
+      this.setState({ confirmPassword: event.target.value });
+    }
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+
+    console.log(this.state);
+  };
+
   render() {
     return (
       <div>
         <Button color="danger" onClick={this.toggleModal}>
-          text
+          Login / SignUp
         </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggleModal} size="lg">
           <ModalBody>
@@ -77,78 +101,108 @@ class Container extends Component {
             <TabContent activeTab={this.state.activeTab}>
               <TabPane tabId="1">
                 <Row>
-                  <Col sm="4" >
-                    <img src="/images/rent_deals.png" class="rounded float-left" alt="rent"/>
+                  <Col sm="4">
+                    <img
+                      src="/images/icons8-rent-filled.png"
+                      class="img-fluid"
+                      alt="rent"
+                    />
                   </Col>
                   <Col sm="8">
-                    <Form>
+                    <Form
+                      onSubmit={this.handleSubmit}
+                      className="formContainer"
+                    >
                       <FormGroup className="FormField">
                         <Input
                           type="text"
-                          name="fullName"
-                          id="exampleFullName"
+                          name="name"
                           placeholder="Full name"
+                          onChange={this.handleChange}
+                          value={this.state.name}
                         />
                       </FormGroup>
                       <FormGroup className="FormField">
                         <Input
                           type="email"
                           name="email"
-                          id="exampleEmail"
                           placeholder="Email Address"
+                          onChange={this.handleChange}
+                          value={this.state.email}
                         />
                       </FormGroup>
                       <FormGroup className="FormField">
                         <Input
                           type="number"
                           name="phoneNumber"
-                          id="examplePhoneNumber"
                           placeholder="Phone Number"
+                          onChange={this.handleChange}
+                          value={this.state.phoneNumber}
                         />
                       </FormGroup>
                       <FormGroup className="FormField">
                         <Input
                           type="password"
                           name="password"
-                          id="examplePassword"
                           placeholder="Create a Password"
+                          onChange={this.handleChange}
+                          value={this.state.password}
                         />
                       </FormGroup>
                       <FormGroup className="FormField">
                         <Input
                           type="password"
-                          name="password"
-                          id="examplePassword"
+                          name="confirmPassword"
                           placeholder="Confirm Password"
+                          onChange={this.handleChange}
+                          value={this.state.confirmPassword}
                         />
                       </FormGroup>
-                      <Button>Sign up</Button>
+                      <Button
+                        disabled={
+                          this.state.password !== this.state.confirmPassword
+                        }
+                        type="submit"
+                      >
+                        Sign up
+                      </Button>
                     </Form>
                   </Col>
                 </Row>
               </TabPane>
               <TabPane tabId="2">
                 <Row>
-                  <Col sm="4" />
+                  <Col sm="4">
+                    <img
+                      src="/images/icons8-rent-filled.png"
+                      class="img-fluid"
+                      alt="rent"
+                    />
+                  </Col>
                   <Col sm="8">
-                    <Form>
+                    <Form
+                      onSubmit={this.handleSubmit}
+                      className="formContainer"
+                    >
                       <FormGroup>
                         <Input
                           type="email"
                           name="email"
-                          id="exampleEmail"
                           placeholder="Email Address"
+                          onChange={this.handleChange}
+                          value={this.state.email}
                         />
                       </FormGroup>
                       <FormGroup>
                         <Input
                           type="password"
                           name="password"
-                          id="examplePassword"
                           placeholder="Password"
+                          onChange={this.handleChange}
+                          value={this.state.password}
                         />
                       </FormGroup>
-                      <Button>Log in</Button>
+                      <Button type="submit">Log in</Button>
                     </Form>
                   </Col>
                 </Row>

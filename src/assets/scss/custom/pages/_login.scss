@@ -14,14 +14,20 @@
 }
 
 #switchNav_Item_Active {
-  color: black;
+  border: none;
+  outline: none;
 }
 
 #switchNav_Item_Active.active {
-  border-bottom: 1px solid #db433e;
+  color: black;
+  border-bottom: 3px solid #db433e;
+}
+
+.formContainer {
+  padding: 25px 40px;
+  background-color: #f4f9f9;
 }
 
 .FormField {
   margin-bottom: 20px;
 }
-
