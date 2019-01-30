@@ -1,6 +1,7 @@
 body {
   background: #fff;
   font-family: "Roboto", sans-serif;
+  font-size: 16px;
   font-weight: 300;
   max-width: 100% !important;
   overflow-x: hidden !important;
@@ -11,3 +12,15 @@ body {
 //     font-family: 'Palanquin Dark', sans-serif !important;
 // }
 
+.header-section {
+  margin-bottom: 30px;
+  .small-border-section {
+    background-color: #dc3226;
+    height: 3px;
+    width: 85px;
+    border-top: none;
+    border-radius: 50px;
+    text-align: left;
+    margin: 10px auto;
+  }
+}
