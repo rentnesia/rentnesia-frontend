@@ -1,0 +1,30 @@
+.background-white {
+  @include background-variant(
+    map_get($background-white, background),
+    map_get($background-white, color)
+  );
+}
+.background-black {
+  @include background-variant(
+    map_get($background-black, background),
+    map_get($background-black, color)
+  );
+}
+.background-red {
+  @include background-variant(
+    map_get($background-red, background),
+    map_get($background-red, color)
+  );
+}
+.background-grey {
+  @include background-variant(
+    map_get($background-grey, background),
+    map_get($background-grey, color)
+  );
+}
+.background-w-grey {
+  @include background-variant(
+    map_get($background-w-grey, background),
+    map_get($background-w-grey, color)
+  );
+}

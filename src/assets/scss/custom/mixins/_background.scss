@@ -1,0 +1,4 @@
+@mixin background-variant($background, $color) {
+  background-color: $background !important;
+  color: $color !important;
+}

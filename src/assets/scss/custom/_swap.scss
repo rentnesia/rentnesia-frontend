@@ -1,0 +1,15 @@
+.swap-white {
+  @include swap-variant($swap-white);
+}
+.swap-black {
+  @include swap-variant($swap-black);
+}
+.swap-red {
+  @include swap-variant($swap-red);
+}
+.swap-w-grey {
+  @include swap-variant($swap-w-grey);
+}
+.swap-grey {
+  @include swap-variant($swap-grey);
+}

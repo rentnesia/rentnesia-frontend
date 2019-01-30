@@ -34,3 +34,32 @@ $btn-warning: (
   background: #f58634,
   border: #f58634
 );
+
+// ==Swap Variant
+$swap-white: "/images/swap/swap-white.png";
+$swap-black: "/images/swap/swap-black.png";
+$swap-red: "/images/swap/swap-red.png";
+$swap-grey: "/images/swap/swap-grey.png";
+$swap-w-grey: "/images/swap/swap-w-grey.png";
+
+// ==Background with Swap
+$background-white: (
+  background: #fff,
+  color: #282828
+);
+$background-black: (
+  background: #282828,
+  color: #fff
+);
+$background-red: (
+  background: #ff0023,
+  color: #fff
+);
+$background-grey: (
+  background: #ccc,
+  color: #282828
+);
+$background-w-grey: (
+  background: #eee,
+  color: #282828
+);

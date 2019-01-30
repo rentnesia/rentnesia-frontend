@@ -1,0 +1,9 @@
+@mixin swap-variant($background) {
+  background-image: url($background);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100vw;
+  height: 135px;
+  margin-top: -135px;
+  z-index: -1;
+}
