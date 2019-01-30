@@ -1,15 +1,17 @@
-.logo-white {
-  width: 157.5px;
-  height: 45px;
-  background: url("/images/logo-rentnesia/rentnesia-logo-black.png");
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
-
-.logo {
+.logo-primary {
   width: 157.5px;
   height: 45px;
   background: url("/images/logo-rentnesia/rentnesia-logo.png");
   background-repeat: no-repeat;
   background-size: 100%;
+  transition-duration: 0.5s;
+}
+
+.logo {
+  width: 157.5px;
+  height: 45px;
+  background: url("/images/logo-rentnesia/rentnesia-logo-primary.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition-duration: 0.5s;
 }

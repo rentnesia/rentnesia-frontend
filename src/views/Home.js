@@ -1,19 +1,9 @@
 import React, { Component } from "react";
-import OwlCarousel from "react-owl-carousel2";
-import "react-owl-carousel2/src/owl.carousel.css";
 
 import Shell from "../components/Shell";
-
-const options = {
-  items: 1,
-  navText: [
-    `<img src='/images/carousel/button/chevron-left.png'>`,
-    `<img src='/images/carousel/button/chevron-right.png'>`
-  ],
-  nav: true,
-  rewind: true,
-  autoplay: true
-};
+import Carousel from "../components/Home/Carousel";
+import CardsMenu from "../components/Home/CardsMenu";
+import Article from "../components/Home/Article";
 
 class Home extends Component {
   constructor(props) {
@@ -23,29 +13,9 @@ class Home extends Component {
   render() {
     return (
       <Shell>
-        <OwlCarousel id="home-carousel" options={options}>
-          <div>
-            <img
-              className="w-100"
-              src="/images/carousel/calleven_web.png"
-              alt="Call Even"
-            />
-          </div>
-          <div>
-            <img
-              className="w-100"
-              src="/images/carousel/freeboxchange.png"
-              alt="Free Box Change"
-            />
-          </div>
-          <div>
-            <img
-              className="w-100"
-              src="/images/carousel/newyouweb.png"
-              alt="Ikea"
-            />
-          </div>
-        </OwlCarousel>
+        <Carousel />
+        <CardsMenu />
+        <Article />
       </Shell>
     );
   }
