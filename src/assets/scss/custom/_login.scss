@@ -15,7 +15,7 @@
     }
     .right-container {
       padding: 2rem 2rem 2rem 2rem;
-      height: 65vh;
+      min-height: 65vh;
       .navTabs {
         justify-content: start;
         border: none;
@@ -63,7 +63,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 65vh;
+    min-height: 65vh;
   }
   .formContainer {
     padding: 25px 0;
