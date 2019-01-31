@@ -4,6 +4,7 @@ import Shell from "../components/Shell";
 import Carousel from "../components/Home/Carousel";
 import CardsMenu from "../components/Home/CardsMenu";
 import Article from "../components/Home/Article";
+import Testimonial from "../components/Home/Testimonial";
 
 class Home extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Home extends Component {
         <Carousel />
         <CardsMenu />
         <Article />
+        <Testimonial />
       </Shell>
     );
   }

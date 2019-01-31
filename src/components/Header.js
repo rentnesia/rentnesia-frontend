@@ -117,7 +117,7 @@ class Header extends Component {
                   className="btn btn-sm btn-animate btn-animate-side-right btn-danger btn-join"
                 >
                   <span>
-                    LOGIN/SIGNUP
+                    SIGN
                     <i className="icon fas fa-sign-in-alt" aria-hidden="true" />
                   </span>
                 </Link>

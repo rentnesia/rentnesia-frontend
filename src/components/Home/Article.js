@@ -87,7 +87,7 @@ class Article extends Component {
           ]
         }
       ],
-      swap: ["white", "w-grey", "white", "grey"],
+      swap: ["white", "w-grey", "white", "black"],
       scrollspyParent: ["why-rentals", "benefits", "processes"]
     };
   }
