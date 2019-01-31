@@ -5,8 +5,9 @@ import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
 import $ from "jquery";
 import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
-
 import { Link } from "react-router-dom";
+
+import Sign from "./Sign";
 
 class Header extends Component {
   static propTypes = {
@@ -18,6 +19,7 @@ class Header extends Component {
   };
 
   state = {
+    modal: false,
     dropdownOpen: false,
     categories: [
       { image: "furniture.png", name: "Furniture" },
@@ -49,58 +51,68 @@ class Header extends Component {
     });
   };
 
+  toggleModal = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
+
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-absolute" id="main-navbar">
-        <div className="container">
-          <Link to="#">
-            <div id="logo-navbar" className="logo" />
-          </Link>
-          <div className="collapse navbar-collapse" id="menu-navbar">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Dropdown
-                  isOpen={this.state.dropdownOpen}
-                  toggle={this.toggleDropdown}
-                >
-                  <DropdownToggle
-                    tag="span"
-                    onClick={this.toggleDropdown}
-                    className="nav-link"
+      <div>
+        <nav
+          className="navbar navbar-expand-lg navbar-absolute"
+          id="main-navbar"
+        >
+          <div className="container">
+            <Link to="#">
+              <div id="logo-navbar" className="logo" />
+            </Link>
+            <div className="collapse navbar-collapse" id="menu-navbar">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <Dropdown
+                    isOpen={this.state.dropdownOpen}
+                    toggle={this.toggleDropdown}
                   >
-                    CATEGORIES <i className="fas fa-chevron-down" />
-                  </DropdownToggle>
-                  <DropdownMenu className="row categories-header text-center">
-                    {this.state.categories.map((item, i) => (
-                      <div
-                        key={i}
-                        className="col-6 item-categorie d-flex justify-content-center align-items-center"
-                        style={{ height: "100px" }}
-                      >
-                        <div>
-                          <img
-                            src={`/images/cards-home/${item.image}`}
-                            height="35px"
-                            alt={item.name}
-                          />
-                          <h6 className="my-10px">{item.name}</h6>
+                    <DropdownToggle
+                      tag="span"
+                      onClick={this.toggleDropdown}
+                      className="nav-link"
+                    >
+                      CATEGORIES <i className="fas fa-chevron-down" />
+                    </DropdownToggle>
+                    <DropdownMenu className="row categories-header text-center">
+                      {this.state.categories.map((item, i) => (
+                        <div
+                          key={i}
+                          className="col-6 item-categorie d-flex justify-content-center align-items-center"
+                          style={{ height: "100px" }}
+                        >
+                          <div>
+                            <img
+                              src={`/images/cards-home/${item.image}`}
+                              height="35px"
+                              alt={item.name}
+                            />
+                            <h6 className="my-10px">{item.name}</h6>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </DropdownMenu>
-                </Dropdown>
-              </li>
-              <li className="nav-item">
-                <Link to="#" className="nav-link">
-                  <h6 className="fas fa-search" aria-hidden="true" />
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a href="#" className="nav-link">
-                  <h6 className="fas fa-shopping-cart" aria-hidden="true" />
-                </a>
-              </li>
-              {/* <li className="nav-item mr-0">
+                      ))}
+                    </DropdownMenu>
+                  </Dropdown>
+                </li>
+                <li className="nav-item">
+                  <Link to="#" className="nav-link">
+                    <h6 className="fas fa-search" aria-hidden="true" />
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <a href="#" className="nav-link">
+                    <h6 className="fas fa-shopping-cart" aria-hidden="true" />
+                  </a>
+                </li>
+                {/* <li className="nav-item mr-0">
                 <Link
                   to="#"
                   className="btn btn-sm btn-animate btn-animate-side-right btn-transparent-danger secondary btn-login"
@@ -111,21 +123,26 @@ class Header extends Component {
                   </span>
                 </Link>
               </li> */}
-              <li className="nav-item">
-                <Link
-                  to="#"
-                  className="btn btn-sm btn-animate btn-animate-side-right btn-danger btn-join"
-                >
-                  <span>
-                    SIGN
-                    <i className="icon fas fa-sign-in-alt" aria-hidden="true" />
-                  </span>
-                </Link>
-              </li>
-            </ul>
+                <li className="nav-item">
+                  <button
+                    onClick={this.toggleModal}
+                    className="btn btn-sm btn-animate btn-animate-side-right btn-danger btn-join"
+                  >
+                    <span>
+                      SIGN
+                      <i
+                        className="icon fas fa-sign-in-alt"
+                        aria-hidden="true"
+                      />
+                    </span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+        <Sign toggle={this.toggleModal} status={this.state.modal} />
+      </div>
     );
   }
 }

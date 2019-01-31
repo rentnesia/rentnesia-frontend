@@ -20,8 +20,13 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>ini footer</h1>
+      <div className="footer">
+        <div className="swap-black" />
+        <div className="footer-container">
+          <div className="container">
+            <h1>ini footer broh</h1>
+          </div>
+        </div>
       </div>
     );
   }

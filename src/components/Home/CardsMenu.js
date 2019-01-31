@@ -29,7 +29,7 @@ class CardsMenu extends Component {
                   <div className="small-border" />
                   <img
                     src={`/images/cards-home/${card.image}`}
-                    height="75px"
+                    height="50vw"
                     className="mt-10px"
                     alt={card.name}
                   />

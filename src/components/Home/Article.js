@@ -95,7 +95,11 @@ class Article extends Component {
   componentDidMount() {
     $(window).scroll(() => {
       const scrollspy = $("#scrollspy");
-      if ($(window).scrollTop() >= 810) {
+      let innerHeight = $(window).innerHeight();
+      if (
+        $(window).scrollTop() >= innerHeight * 1.02 &&
+        $(window).scrollTop() < innerHeight * 6.2
+      ) {
         scrollspy.addClass("fixed");
       } else {
         scrollspy.removeClass("fixed");

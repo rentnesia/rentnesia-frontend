@@ -4,7 +4,7 @@
 
 .cards-menu {
   z-index: 2 !important;
-  margin-top: -10vh;
+  margin-top: -5vh;
   .card {
     margin: 0 5px;
     width: 15.5% !important;
@@ -37,6 +37,7 @@
     position: absolute;
     width: 100vw;
     margin-top: -40px;
+    // transition: all 0.2s;
     .scrollspy-custom {
       text-align: center;
       border-bottom: 1px solid #e6e6e6;
@@ -62,6 +63,7 @@
       background: white;
       padding-top: 10px;
       z-index: 10;
+      // transition: all 0.5s;
     }
   }
   .row {
@@ -72,10 +74,10 @@
   }
 }
 
-.testimonial{
-  background: #eee;
+.testimonial {
+  background: #ccc;
   padding: 50px 0;
-  .box-testimonial{
+  .box-testimonial {
     width: 100%;
     height: 50vh;
     background: #fff;
@@ -86,21 +88,21 @@
       position: relative;
       z-index: 0;
 
-      .item{
+      .item {
         padding: 4vh 7vw;
-        p{
+        p {
           line-height: 25px;
           letter-spacing: 1px;
         }
-        .testimonial-image{
+        .testimonial-image {
           width: 75px;
           height: 75px;
           border-radius: 75px;
           display: inline-block;
         }
-        .testimonial-text{
+        .testimonial-text {
           display: inline-block;
-          margin-left:20px;
+          margin-left: 20px;
           height: 75px;
         }
       }

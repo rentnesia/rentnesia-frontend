@@ -33,7 +33,7 @@
 .navbar-absolute {
   background: transparent;
   position: absolute;
-  width: 100%;
+  width: 100vw;
   z-index: 10;
   padding: 2rem;
   transition-duration: 0.5s;
@@ -65,7 +65,7 @@
 .navbar-fixed {
   background: white;
   position: fixed;
-  width: 100%;
+  width: 100vw;
   z-index: 11;
   padding: 1rem;
   transition-duration: 0.5s;
