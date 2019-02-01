@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel2";
 import "react-owl-carousel2/src/owl.carousel.css";
 
-
 const options = {
   items: 1,
   navText: [

@@ -3,7 +3,6 @@ import {
   Modal,
   ModalBody,
   Form,
-  FormGroup,
   Input,
   TabContent,
   TabPane,
@@ -26,7 +25,7 @@ class Sign extends Component {
       email: "",
       password: "",
       confirmPassword: "",
-      phoneNumber: "",
+      username: "",
       signIn: {
         email: "",
         password: ""
@@ -82,7 +81,7 @@ class Sign extends Component {
                 <img
                   src="/images/login-container.svg"
                   alt="Login Container"
-                  width="60%"
+                  width="100%"
                 />
               </Col>
               <Col sm="8" className="right-container">
@@ -124,18 +123,19 @@ class Sign extends Component {
                     >
                       <div className="row">
                         <div className="col-6">
-                          <FormGroup className="FormField">
+                          <div className="md-form">
                             <Input
                               type="text"
+                              className="form-control"
                               name="first_name"
                               placeholder="First name"
                               onChange={this.handleChange}
                               value={this.state.name}
                             />
-                          </FormGroup>
+                          </div>
                         </div>
                         <div className="col-6">
-                          <FormGroup className="FormField">
+                          <div className="md-form">
                             <Input
                               type="text"
                               name="last_name"
@@ -143,28 +143,28 @@ class Sign extends Component {
                               onChange={this.handleChange}
                               value={this.state.name}
                             />
-                          </FormGroup>
+                          </div>
                         </div>
                       </div>
-                      <FormGroup className="FormField">
+                      <div className="md-form" style={{ marginTop: "-5px" }}>
+                        <Input
+                          type="text"
+                          name="username"
+                          placeholder="Username"
+                          onChange={this.handleChange}
+                          value={this.state.username}
+                        />
+                      </div>
+                      <div className="md-form">
                         <Input
                           type="email"
                           name="email"
-                          placeholder="Email Address"
+                          placeholder="Email"
                           onChange={this.handleChange}
                           value={this.state.email}
                         />
-                      </FormGroup>
-                      <FormGroup className="FormField">
-                        <Input
-                          type="tel"
-                          name="phoneNumber"
-                          placeholder="Phone Number"
-                          onChange={this.handleChange}
-                          value={this.state.phoneNumber}
-                        />
-                      </FormGroup>
-                      <FormGroup className="FormField">
+                      </div>
+                      <div className="md-form">
                         <Input
                           type="password"
                           name="password"
@@ -172,8 +172,8 @@ class Sign extends Component {
                           onChange={this.handleChange}
                           value={this.state.password}
                         />
-                      </FormGroup>
-                      <FormGroup className="FormField">
+                      </div>
+                      <div className="md-form">
                         <Input
                           type="password"
                           name="confirmPassword"
@@ -181,7 +181,7 @@ class Sign extends Component {
                           onChange={this.handleChange}
                           value={this.state.confirmPassword}
                         />
-                      </FormGroup>
+                      </div>
                       <small>
                         By signing up, you agree to Rentnesia{" "}
                         <b>Terms and Conditions & Privacy Policy</b>
@@ -214,16 +214,16 @@ class Sign extends Component {
                       onSubmit={this.handleSubmit}
                       className="formContainer"
                     >
-                      <FormGroup>
+                      <div className="md-form">
                         <Input
                           type="email"
                           name="email"
-                          placeholder="Email Address"
+                          placeholder="Email"
                           onChange={this.handleChange}
                           value={this.state.email}
                         />
-                      </FormGroup>
-                      <FormGroup>
+                      </div>
+                      <div className="md-form">
                         <Input
                           type="password"
                           name="password"
@@ -231,7 +231,7 @@ class Sign extends Component {
                           onChange={this.handleChange}
                           value={this.state.password}
                         />
-                      </FormGroup>
+                      </div>
                       <small>Forgot Password ?</small>
                       <button
                         className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
