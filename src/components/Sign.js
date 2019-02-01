@@ -74,6 +74,7 @@ class Sign extends Component {
                 src="/images/close.png"
                 className="icon-close"
                 alt="btn-close"
+                onClick={this.props.toggle}
               />
             </div>
             <Row>

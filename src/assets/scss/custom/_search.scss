@@ -1,0 +1,22 @@
+.search-container {
+  z-index: 15;
+  position: fixed;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 120vh;
+  background: #fff;
+  .search {
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding: 4vh 0;
+    .btn-close {
+      cursor: pointer;
+    }
+  }
+  .filter {
+    border-bottom: 1px solid rgb(221, 221, 221);
+    padding: 2vh 0;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+}

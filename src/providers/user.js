@@ -1,7 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-import { HOST } from '../config';
-
+import { HOST } from "../config";
 // export const login = (username, password) =>
 //   new Promise((resolve, reject) => {
 //     axios

@@ -4,6 +4,7 @@
     padding: 0 1rem !important;
     .btn-close {
       position: absolute;
+      z-index: 15;
       right: 4vw;
       top: 3vh;
       height: 0;
@@ -11,6 +12,7 @@
       .icon-close {
         width: 35px;
         height: 35px;
+        cursor: pointer;
       }
     }
     .right-container {

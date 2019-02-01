@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import OwlCarousel from "react-owl-carousel2";
 import "react-owl-carousel2/src/owl.carousel.css";
 
+
 const options = {
   items: 1,
   navText: [
@@ -9,7 +10,7 @@ const options = {
     `<img src='/images/carousel/button/chevron-right.png'>`
   ],
   nav: true,
-  rewind: true,
+  loop: true,
   autoplay: true,
   dots: false,
   autoplayTimeout: 5000

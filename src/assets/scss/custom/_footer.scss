@@ -1,8 +1,26 @@
 .footer {
-  margin-top: -170px;
+  // margin-top: 20px;
   .footer-container {
     background: #282828;
     color: #fff;
-    padding: 5vh 0;
+    padding: 8vh 0;
+    ul {
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      list-style-type: none;
+      li {
+        font-size: 14px;
+        padding: 3px;
+      }
+    }
+  }
+  .end-footer {
+    background: #3b3b3b;
+    color: #fff;
+    padding: 2vh 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

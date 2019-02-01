@@ -8,6 +8,7 @@ import { Dropdown, DropdownToggle, DropdownMenu } from "reactstrap";
 import { Link } from "react-router-dom";
 
 import Sign from "./Sign";
+import Search from "./Search";
 
 class Header extends Component {
   static propTypes = {
@@ -21,6 +22,7 @@ class Header extends Component {
   state = {
     modal: false,
     dropdownOpen: false,
+    search: false,
     categories: [
       { image: "furniture.png", name: "Furniture" },
       { image: "electronics.png", name: "Electronic" },
@@ -57,6 +59,12 @@ class Header extends Component {
     });
   };
 
+  handleSearch = () => {
+    this.setState({
+      search: !this.state.search
+    });
+  };
+
   render() {
     return (
       <div>
@@ -65,7 +73,7 @@ class Header extends Component {
           id="main-navbar"
         >
           <div className="container">
-            <Link to="#">
+            <Link to="/#home-carousel">
               <div id="logo-navbar" className="logo" />
             </Link>
             <div className="collapse navbar-collapse" id="menu-navbar">
@@ -103,26 +111,15 @@ class Header extends Component {
                   </Dropdown>
                 </li>
                 <li className="nav-item">
-                  <Link to="#" className="nav-link">
+                  <div className="nav-link" onClick={this.handleSearch}>
                     <h6 className="fas fa-search" aria-hidden="true" />
-                  </Link>
+                  </div>
                 </li>
                 <li className="nav-item">
                   <a href="#" className="nav-link">
                     <h6 className="fas fa-shopping-cart" aria-hidden="true" />
                   </a>
                 </li>
-                {/* <li className="nav-item mr-0">
-                <Link
-                  to="#"
-                  className="btn btn-sm btn-animate btn-animate-side-right btn-transparent-danger secondary btn-login"
-                >
-                  <span>
-                    LOGIN
-                    <i className="icon fas fa-arrow-right" aria-hidden="true" />
-                  </span>
-                </Link>
-              </li> */}
                 <li className="nav-item">
                   <button
                     onClick={this.toggleModal}
@@ -142,6 +139,7 @@ class Header extends Component {
           </div>
         </nav>
         <Sign toggle={this.toggleModal} status={this.state.modal} />
+        {this.state.search ? <Search handle={this.handleSearch} /> : ""}
       </div>
     );
   }
