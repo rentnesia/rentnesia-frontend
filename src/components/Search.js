@@ -30,7 +30,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="search-container">
+      <div className={`search-container ${this.props.status ? "active" : ""}`}>
         <div className="search">
           <div className="container">
             <div className="row">

@@ -2,8 +2,12 @@
   // margin-top: 20px;
   .footer-container {
     background: #282828;
-    color: #fff;
+    color: #fff !important;
     padding: 8vh 0;
+    h2,
+    h6 {
+      color: #fff !important;
+    }
     ul {
       margin: 0;
       padding: 0;

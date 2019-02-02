@@ -4,9 +4,14 @@
   overflow-y: auto;
   top: 0;
   left: 0;
+  height: 0;
   width: 100vw;
-  height: 120vh;
   background: #fff;
+  transition: 0.7s;
+  &.active {
+    transition: 0.7s;
+    height: 120vh;
+  }
   .search {
     border-bottom: 1px solid rgb(221, 221, 221);
     padding: 3vh 0;
@@ -59,21 +64,6 @@
         }
         .pointer {
           cursor: pointer;
-        }
-        .dropdown-item {
-          cursor: pointer;
-          &:active {
-            color: #fff;
-            text-decoration: none;
-            background-color: #d10404;
-          }
-          &:hover,
-          &:focus {
-            color: #000;
-            text-decoration: none;
-            background-color: rgba(209, 4, 4, 0.3) !important;
-            outline: 0 !important;
-          }
         }
       }
     }

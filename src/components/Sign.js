@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import {
   Modal,
   ModalBody,
-  Form,
-  Input,
   TabContent,
   TabPane,
   Nav,
@@ -15,21 +13,14 @@ import {
 
 import classnames from "classnames";
 
+import SignIn from "./Sign/SignIn";
+import SignUp from "./Sign/SignUp";
+
 class Sign extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: "1",
-      first_name: "",
-      last_name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-      username: "",
-      signIn: {
-        email: "",
-        password: ""
-      }
+      activeTab: "1"
     };
   }
 
@@ -39,23 +30,6 @@ class Sign extends Component {
         activeTab: tab
       });
     }
-  };
-
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  handleConfirmPassword = event => {
-    if (event.target.value !== this.state.password) {
-      console.log("failed");
-      this.setState({ confirmPassword: event.target.value });
-    }
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-
-    console.log(this.state);
   };
 
   render() {
@@ -117,139 +91,10 @@ class Sign extends Component {
                 </Nav>
                 <TabContent activeTab={this.state.activeTab}>
                   <TabPane tabId="1">
-                    <Form
-                      onSubmit={this.handleSubmit}
-                      className="formContainer"
-                    >
-                      <div className="row">
-                        <div className="col-6">
-                          <div className="md-form">
-                            <Input
-                              type="text"
-                              className="form-control"
-                              name="first_name"
-                              placeholder="First name"
-                              onChange={this.handleChange}
-                              value={this.state.name}
-                            />
-                          </div>
-                        </div>
-                        <div className="col-6">
-                          <div className="md-form">
-                            <Input
-                              type="text"
-                              name="last_name"
-                              placeholder="Last name"
-                              onChange={this.handleChange}
-                              value={this.state.name}
-                            />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="md-form" style={{ marginTop: "-5px" }}>
-                        <Input
-                          type="text"
-                          name="username"
-                          placeholder="Username"
-                          onChange={this.handleChange}
-                          value={this.state.username}
-                        />
-                      </div>
-                      <div className="md-form">
-                        <Input
-                          type="email"
-                          name="email"
-                          placeholder="Email"
-                          onChange={this.handleChange}
-                          value={this.state.email}
-                        />
-                      </div>
-                      <div className="md-form">
-                        <Input
-                          type="password"
-                          name="password"
-                          placeholder="Create a Password"
-                          onChange={this.handleChange}
-                          value={this.state.password}
-                        />
-                      </div>
-                      <div className="md-form">
-                        <Input
-                          type="password"
-                          name="confirmPassword"
-                          placeholder="Confirm Password"
-                          onChange={this.handleChange}
-                          value={this.state.confirmPassword}
-                        />
-                      </div>
-                      <small>
-                        By signing up, you agree to Rentnesia{" "}
-                        <b>Terms and Conditions & Privacy Policy</b>
-                      </small>
-                      <button
-                        className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
-                        disabled={
-                          this.state.password !== this.state.confirmPassword ||
-                          this.state.first_name.length <= 1 ||
-                          this.state.last_name.length <= 1 ||
-                          this.state.email.length <= 1 ||
-                          this.state.phoneNumber.length <= 1 ||
-                          this.state.password.length < 1 ||
-                          this.state.confirmPassword.length < 1
-                        }
-                        type="submit"
-                      >
-                        <span>
-                          SIGN UP
-                          <i
-                            className="icon fas fa-arrow-right"
-                            aria-hidden="true"
-                          />
-                        </span>
-                      </button>
-                    </Form>
+                    <SignUp toggle={this.props.toggle} />
                   </TabPane>
                   <TabPane tabId="2">
-                    <Form
-                      onSubmit={this.handleSubmit}
-                      className="formContainer"
-                    >
-                      <div className="md-form">
-                        <Input
-                          type="email"
-                          name="email"
-                          placeholder="Email"
-                          onChange={this.handleChange}
-                          value={this.state.email}
-                        />
-                      </div>
-                      <div className="md-form">
-                        <Input
-                          type="password"
-                          name="password"
-                          placeholder="Password"
-                          onChange={this.handleChange}
-                          value={this.state.password}
-                        />
-                      </div>
-                      <small>Forgot Password ?</small>
-                      <button
-                        className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
-                        disabled={
-                          this.state.signIn.email.length < 1 ||
-                          this.state.signIn.password.length < 1
-                        }
-                        type="submit"
-                      >
-                        <span>
-                          SIGN IN
-                          <i
-                            className="icon fas fa-arrow-right"
-                            aria-hidden="true"
-                          />
-                        </span>
-                      </button>
-                    </Form>
+                    <SignIn toggle={this.props.toggle} />
                   </TabPane>
                 </TabContent>
               </Col>
@@ -260,5 +105,4 @@ class Sign extends Component {
     );
   }
 }
-
 export default Sign;

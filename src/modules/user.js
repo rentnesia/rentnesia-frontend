@@ -1,4 +1,5 @@
-// import { listUsers, createUser, deleteUser, resetPassword } from '../providers/user';
+import { createUser } from "../providers/user";
+import { message } from "antd";
 // import { resolve } from 'url';
 
 const LIST = "@user/LIST";
@@ -17,6 +18,8 @@ const DELETE = "@user/DELETE";
 const DELETE_SUCCESS = "@user/DELETE_SUCCESS";
 const DELETE_ERROR = "@user/DELETE_ERROR";
 
+const SET_FORM = "@user/SET_FORM";
+
 const initialState = {
   list: {
     data: [],
@@ -26,6 +29,15 @@ const initialState = {
     errorMessage: ""
   },
   create: {
+    form: {
+      user_type: "customer",
+      first_name: "",
+      last_name: "",
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: ""
+    },
     pending: false,
     error: false,
     errorMessage: ""
@@ -66,6 +78,17 @@ export default function(state = initialState, action) {
           pending: false,
           error: true,
           errorMessage: action.payload
+        }
+      };
+    case SET_FORM:
+      return {
+        ...state,
+        create: {
+          ...state.create,
+          form: {
+            ...state.create.form,
+            [action.payload.name]: action.payload.value
+          }
         }
       };
     case CREATE:
@@ -173,34 +196,35 @@ export default function(state = initialState, action) {
 //     });
 // };
 
-// export const createUsers = ({ username, password, level }) => dispatch => {
-//   dispatch({ type: CREATE });
-//   return new Promise((resolve, reject) => {
-//     createUser({ username, password, level })
-//       .then(result => {
-//         if (result.success) {
-//           dispatch({ type: CREATE_SUCCESS });
-//           return resolve(result);
-//         }
-//         let msg =
-//           "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
-//         if (result.message) {
-//           msg = result.message;
-//           if (msg.isArray()) {
-//             msg = msg[0].toString();
-//           }
-//         }
-//         dispatch({ type: CREATE_ERROR, payload: msg });
-//         return reject(result);
-//       })
-//       .catch(err => {
-//         const msg =
-//           "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
-//         dispatch({ type: CREATE_ERROR, payload: msg });
-//         return reject(err);
-//       });
-//   });
-// };
+export const createUsers = form => dispatch => {
+  dispatch({ type: CREATE });
+  return new Promise((resolve, reject) => {
+    createUser(form)
+      .then(result => {
+        dispatch({ type: CREATE_SUCCESS });
+        message.success("Berhasil Sukses");
+        return resolve(result);
+        // let msg =
+        //   "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
+        // if (result.message) {
+        //   msg = result.message;
+        //   if (msg.isArray()) {
+        //     msg = msg[0].toString();
+        //   }
+        // }
+        // dispatch({ type: CREATE_ERROR, payload: msg });
+        // message.error(msg);
+        // return reject(result);
+      })
+      .catch(err => {
+        const msg =
+          "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
+        dispatch({ type: CREATE_ERROR, payload: msg });
+        message.error(msg);
+        return reject(err);
+      });
+  });
+};
 
 // export const resetUserPassword = ({ id }) => dispatch => {
 //   dispatch({ type: RESET });
@@ -261,3 +285,13 @@ export default function(state = initialState, action) {
 //       });
 //   });
 // };
+
+export const setForm = (name, value) => dispatch => {
+  dispatch({
+    type: SET_FORM,
+    payload: {
+      name,
+      value
+    }
+  });
+};
