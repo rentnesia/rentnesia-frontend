@@ -1,0 +1,68 @@
+.dashboard-empty-appointment {
+  margin-top: 130px;
+  padding: 26px 29px 15px;
+  text-align: center;
+  border: 1px solid #d6d5dc;
+  background-color: #f4f4f4;
+}
+.card-title {
+  font-weight: 700;
+  color: #33435a;
+  font-size: 1rem;
+}
+.dashboard-empty-items {
+  margin-top: 23px;
+  margin-bottom: 50px;
+  padding: 26px 29px 15px;
+  text-align: center;
+  border: 1px solid #d6d5dc;
+  background-color: #f4f4f4;
+}
+
+.dashboard-empty-items-img {
+  background-size: 100%;
+  width: 270px;
+  height: 120px;
+}
+
+.card-title-items {
+  font-weight: 700;
+  color: #33435a;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.account-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+
+  .account-details-avatar {
+    display: flex;
+    justify-content: flex-start;
+    padding: 100px;
+    margin-top: 50px;
+    margin-left: 125px;
+
+    .account-avatar {
+      align-items: center;
+      width: 6.75rem;
+      height: 6.75rem;
+
+      &-image {
+        display: flex;
+        justify-content: center;
+
+        &-edit {
+          bottom: 0;
+          right: 0;
+        }
+      }
+    }
+  }
+  .form-profile {
+    margin-top: -70px;
+    margin-bottom: 100px;
+  }
+}

@@ -1,239 +1,268 @@
 .btn {
-    padding: 0.75rem 1.25rem;
-    &.btn-sm{
-        padding: .429rem 1.572rem;
-    }
-    &.btn-lg{
-        padding: .715rem 2.358rem;
-    }
+  padding: 0.75rem 1.25rem;
+  &.btn-sm {
+    padding: 0.429rem 1.572rem;
+  }
+  &.btn-lg {
+    padding: 0.715rem 2.358rem;
+  }
 }
 
 .btn-primary {
-    @include button-variant( map_get($btn-primary, color), map_get($btn-primary, background), map_get($btn-primary, border));
+  @include button-variant(
+    map_get($btn-primary, color),
+    map_get($btn-primary, background),
+    map_get($btn-primary, border)
+  );
 }
 
 .btn-secondary {
-    @include button-variant( map_get($btn-secondary, color), map_get($btn-secondary, background), map_get($btn-secondary, border));
+  @include button-variant(
+    map_get($btn-secondary, color),
+    map_get($btn-secondary, background),
+    map_get($btn-secondary, border)
+  );
 }
 
 .btn-danger {
-    @include button-variant( map_get($btn-danger, color), map_get($btn-danger, background), map_get($btn-danger, border));
+  @include button-variant(
+    map_get($btn-danger, color),
+    map_get($btn-danger, background),
+    map_get($btn-danger, border)
+  );
 }
 
-.btn-warning{
-    @include button-variant( map_get($btn-warning, color), map_get($btn-warning, background), map_get($btn-warning, border));
+.btn-warning {
+  @include button-variant(
+    map_get($btn-warning, color),
+    map_get($btn-warning, background),
+    map_get($btn-warning, border)
+  );
 }
-.btn-transparent-danger{
-    @include button-variant(map_get($btn-danger, background), transparent, transparent);
+.btn-transparent-danger {
+  @include button-variant(
+    map_get($btn-danger, background),
+    transparent,
+    transparent
+  );
 }
-
-
 
 .btn-login {
-    font-weight: 700;
-    letter-spacing: 1px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 .btn-join {
-    font-weight: 500;
-    letter-spacing: 1px;
-    padding: .429rem 1.572rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  padding: 0.429rem 1.572rem;
 }
-
 
 // Button Animation
 .btn-animate {
-    position: relative;
-    overflow: hidden;
-    span {
-        display: block;
-        width: 100%;
-        height: 100%;
-        -webkit-transform: translate(0, 0);
-        -ms-transform: translate(0, 0);
-        -o-transform: translate(0, 0);
-        transform: translate(0, 0);
-    }
+  position: relative;
+  overflow: hidden;
+  span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 }
 
 .btn-animate-side {
+  span {
+    -webkit-transition: -webkit-transform 0.2s ease-out 0s;
+    -o-transition: -o-transform 0.2s ease-out 0s;
+    transition: transform 0.2s ease-out 0s;
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      display: block;
+      opacity: 0;
+      -webkit-transition: opacity 0.2s ease-out 0s;
+      -o-transition: opacity 0.2s ease-out 0s;
+      transition: opacity 0.2s ease-out 0s;
+      -webkit-transform: translate(-20px, -50%);
+      -ms-transform: translate(-20px, -50%);
+      -o-transform: translate(-20px, -50%);
+      transform: translate(-20px, -50%);
+    }
+  }
+  &:hover {
     span {
-        -webkit-transition: -webkit-transform .2s ease-out 0s;
-        -o-transition: -o-transform .2s ease-out 0s;
-        transition: transform .2s ease-out 0s;
-        .icon {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            display: block;
-            opacity: 0;
-            -webkit-transition: opacity .2s ease-out 0s;
-            -o-transition: opacity .2s ease-out 0s;
-            transition: opacity .2s ease-out 0s;
-            -webkit-transform: translate(-20px, -50%);
-            -ms-transform: translate(-20px, -50%);
-            -o-transform: translate(-20px, -50%);
-            transform: translate(-20px, -50%);
-        }
+      -webkit-transform: translate(10px, 0);
+      -ms-transform: translate(10px, 0);
+      -o-transform: translate(10px, 0);
+      transform: translate(10px, 0);
+      .icon {
+        opacity: 1;
+      }
     }
-    &:hover {
-        span {
-            -webkit-transform: translate(10px, 0);
-            -ms-transform: translate(10px, 0);
-            -o-transform: translate(10px, 0);
-            transform: translate(10px, 0);
-            .icon {
-                opacity: 1;
-            }
-        }
-    }
-    &.btn-xs,
-    .btn-group-xs>&.btn {
-        padding: .215rem 1rem;
-    }
-    &.btn-xs span>.icon,
-    .btn-group-xs>&.btn span>.icon {
-        left: 5px;
-    }
-    &.btn-xs:hover span,
-    .btn-group-xs>&.btn:hover span {
-        -webkit-transform: translate(8px, 0);
-        -ms-transform: translate(8px, 0);
-        -o-transform: translate(8px, 0);
-        transform: translate(8px, 0);
-    }
-    &.btn-sm {
-        padding: .429rem 1.572rem;
-    }
-    &.btn-sm span>.icon {
-        left: 3px
-    }
-    &.btn-sm:hover span {
-        -webkit-transform: translate(8px, 0);
-        -ms-transform: translate(8px, 0);
-        -o-transform: translate(8px, 0);
-        transform: translate(8px, 0);
-    }
-    &.btn-lg {
-        padding: .715rem 2.358rem;
-    }
-    &.btn-lg span>.icon {
-        left: -6px;
-    }
-    &.btn-lg:hover span {
-        -webkit-transform: translate(8px, 0);
-        -ms-transform: translate(8px, 0);
-        -o-transform: translate(8px, 0);
-        transform: translate(8px, 0);
-    }
+  }
+  &.btn-xs,
+  .btn-group-xs > &.btn {
+    padding: 0.215rem 1rem;
+  }
+  &.btn-xs span > .icon,
+  .btn-group-xs > &.btn span > .icon {
+    left: 5px;
+  }
+  &.btn-xs:hover span,
+  .btn-group-xs > &.btn:hover span {
+    -webkit-transform: translate(8px, 0);
+    -ms-transform: translate(8px, 0);
+    -o-transform: translate(8px, 0);
+    transform: translate(8px, 0);
+  }
+  &.btn-sm {
+    padding: 0.429rem 1.572rem;
+  }
+  &.btn-sm span > .icon {
+    left: 3px;
+  }
+  &.btn-sm:hover span {
+    -webkit-transform: translate(8px, 0);
+    -ms-transform: translate(8px, 0);
+    -o-transform: translate(8px, 0);
+    transform: translate(8px, 0);
+  }
+  &.btn-lg {
+    padding: 0.715rem 2.358rem;
+  }
+  &.btn-lg span > .icon {
+    left: -6px;
+  }
+  &.btn-lg:hover span {
+    -webkit-transform: translate(8px, 0);
+    -ms-transform: translate(8px, 0);
+    -o-transform: translate(8px, 0);
+    transform: translate(8px, 0);
+  }
 }
 
 .btn-animate-side-right {
+  span {
+    -webkit-transition: -webkit-transform 0.2s ease-out 0s;
+    -o-transition: -o-transform 0.2s ease-out 0s;
+    transition: transform 0.2s ease-out 0s;
+    .icon {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      display: block;
+      opacity: 0;
+      -webkit-transition: opacity 0.2s ease-out 0s;
+      -o-transition: opacity 0.2s ease-out 0s;
+      transition: opacity 0.2s ease-out 0s;
+      -webkit-transform: translate(20px, -50%);
+      -ms-transform: translate(20px, -50%);
+      -o-transform: translate(20px, -50%);
+      transform: translate(20px, -50%);
+    }
+  }
+  &:hover {
     span {
-        -webkit-transition: -webkit-transform .2s ease-out 0s;
-        -o-transition: -o-transform .2s ease-out 0s;
-        transition: transform .2s ease-out 0s;
-        .icon {
-            position: absolute;
-            top: 50%;
-            right: 0;
-            display: block;
-            opacity: 0;
-            -webkit-transition: opacity .2s ease-out 0s;
-            -o-transition: opacity .2s ease-out 0s;
-            transition: opacity .2s ease-out 0s;
-            -webkit-transform: translate(20px, -50%);
-            -ms-transform: translate(20px, -50%);
-            -o-transform: translate(20px, -50%);
-            transform: translate(20px, -50%);
-        }
+      -webkit-transform: translate(-20px, 0);
+      -ms-transform: translate(-20px, 0);
+      -o-transform: translate(-20px, 0);
+      transform: translate(-20px, 0);
+      .icon {
+        opacity: 1;
+      }
     }
-    &:hover {
-        span {
-            -webkit-transform: translate(-20px, 0);
-            -ms-transform: translate(-20px, 0);
-            -o-transform: translate(-20px, 0);
-            transform: translate(-20px, 0);
-            .icon {
-                opacity: 1;
-            }
-        }
-    }
-    &.btn-xs,
-    .btn-group-xs>&.btn {
-        padding: .215rem 1rem;
-    }
-    &.btn-xs span>.icon,
-    .btn-group-xs>&.btn span>.icon {
-        right: 5px;
-    }
-    &.btn-xs:hover span,
-    .btn-group-xs>&.btn:hover span {
-        -webkit-transform: translate(-8px, 0);
-        -ms-transform: translate(-8px, 0);
-        -o-transform: translate(-8px, 0);
-        transform: translate(-8px, 0);
-    }
-    &.btn-sm {
-        padding: .429rem 1.572rem;
-    }
-    &.btn-sm span>.icon {
-        right: 3px
-    }
-    &.btn-sm:hover span {
-        -webkit-transform: translate(-8px, 0);
-        -ms-transform: translate(-8px, 0);
-        -o-transform: translate(-8px, 0);
-        transform: translate(-8px, 0);
-    }
-    &.btn-lg {
-        padding: .715rem 2.358rem;
-    }
-    &.btn-lg span>.icon {
-        right: -6px;
-    }
-    &.btn-lg:hover span {
-        -webkit-transform: translate(-8px, 0);
-        -ms-transform: translate(-8px, 0);
-        -o-transform: translate(-8px, 0);
-        transform: translate(-8px, 0);
-    }
+  }
+  &.btn-xs,
+  .btn-group-xs > &.btn {
+    padding: 0.215rem 1rem;
+  }
+  &.btn-xs span > .icon,
+  .btn-group-xs > &.btn span > .icon {
+    right: 5px;
+  }
+  &.btn-xs:hover span,
+  .btn-group-xs > &.btn:hover span {
+    -webkit-transform: translate(-8px, 0);
+    -ms-transform: translate(-8px, 0);
+    -o-transform: translate(-8px, 0);
+    transform: translate(-8px, 0);
+  }
+  &.btn-sm {
+    padding: 0.429rem 1.572rem;
+  }
+  &.btn-sm span > .icon {
+    right: 3px;
+  }
+  &.btn-sm:hover span {
+    -webkit-transform: translate(-8px, 0);
+    -ms-transform: translate(-8px, 0);
+    -o-transform: translate(-8px, 0);
+    transform: translate(-8px, 0);
+  }
+  &.btn-lg {
+    padding: 0.715rem 2.358rem;
+  }
+  &.btn-lg span > .icon {
+    right: -6px;
+  }
+  &.btn-lg:hover span {
+    -webkit-transform: translate(-8px, 0);
+    -ms-transform: translate(-8px, 0);
+    -o-transform: translate(-8px, 0);
+    transform: translate(-8px, 0);
+  }
 }
 
 .btn-animate-vertical {
+  span {
+    -webkit-transition: all 0.2s ease-out 0s;
+    -o-transition: all 0.2s ease-out 0s;
+    transition: all 0.2s ease-out 0s;
+    .icon {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      display: block;
+      font-size: 1.5rem;
+      -webkit-transform: translate(-50%, -100%);
+      -ms-transform: translate(-50%, -100%);
+      -o-transform: translate(-50%, -100%);
+      transform: translate(-50%, -100%);
+    }
+  }
+  &:hover {
     span {
-        -webkit-transition: all .2s ease-out 0s;
-        -o-transition: all .2s ease-out 0s;
-        transition: all .2s ease-out 0s;
-        .icon {
-            position: absolute;
-            top: -11px;
-            left: 50%;
-            display: block;
-            font-size: 1.5rem;
-            -webkit-transform: translate(-50%, -100%);
-            -ms-transform: translate(-50%, -100%);
-            -o-transform: translate(-50%, -100%);
-            transform: translate(-50%, -100%);
-        }
+      -webkit-transform: translate(0, 150%);
+      -ms-transform: translate(0, 150%);
+      -o-transform: translate(0, 150%);
+      transform: translate(0, 150%);
     }
-    &:hover {
-        span {
-            -webkit-transform: translate(0, 150%);
-            -ms-transform: translate(0, 150%);
-            -o-transform: translate(0, 150%);
-            transform: translate(0, 150%);
-        }
-    }
-    &.btn-xs span>.icon,
-    .btn-group-xs>&.btn span>.icon {
-        top: -5px;
-        font-size: 1.286rem;
-    }
-    &.btn-sm span>.icon {
-        top: -3px;
-        font-size: 1.5rem;
-    }
-    &.btn-lg span>.icon {
-        font-size: 2.643rem;
-    }
+  }
+  &.btn-xs span > .icon,
+  .btn-group-xs > &.btn span > .icon {
+    top: -5px;
+    font-size: 1.286rem;
+  }
+  &.btn-sm span > .icon {
+    top: -3px;
+    font-size: 1.5rem;
+  }
+  &.btn-lg span > .icon {
+    font-size: 2.643rem;
+  }
+}
+
+.btn-schedule {
+  margin-top: 10px;
+}
+
+.btn-schedule-header {
+  margin-left: 20px;
+  padding: 10px 25px;
+}
+.dropdown-item {
+  padding: 5px 10px;
 }
