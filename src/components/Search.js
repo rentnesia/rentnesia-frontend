@@ -10,15 +10,17 @@ class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dropdownOpen: false,
+      dropdownCategory: false,
+      dropdownProduct: false,
       categories: [
-        { image: "furniture.png", name: "Furniture" },
-        { image: "electronics.png", name: "Electronic" },
-        { image: "apparel.png", name: "Apparel" },
-        { image: "vehicle.png", name: "Vehicle" },
-        { image: "appliances.png", name: "Appliances" },
-        { image: "kids.png", name: "Kid's" }
+        "Furniture",
+        "Electronic",
+        "Apparel",
+        "Vehicle",
+        "Appliances",
+        "Kid's"
       ],
+      product_type: ["Smart Device", "Smartphone", "Laptops", "Tv"],
       newItems: [
         {
           image: "lenovo.jpg",
@@ -46,7 +48,12 @@ class Search extends Component {
 
   handleCategory = () => {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownCategory: !this.state.dropdownCategory
+    });
+  };
+  handleProduct = () => {
+    this.setState({
+      dropdownProduct: !this.state.dropdownProduct
     });
   };
 
@@ -88,21 +95,42 @@ class Search extends Component {
                   </li>
                   <li className="nav-item">
                     <Dropdown
-                      isOpen={this.state.dropdownOpen}
+                      isOpen={this.state.dropdownCategory}
                       toggle={this.handleCategory}
                     >
                       <DropdownToggle
                         tag="span"
                         onClick={this.handleCategory}
                         data-toggle="dropdown"
-                        aria-expanded={this.state.dropdownOpen}
+                        aria-expanded={this.state.dropdownCategory}
                         className="nav-link pointer"
                       >
                         Category <i className="fas fa-chevron-down" />
                       </DropdownToggle>
                       <DropdownMenu>
                         {this.state.categories.map((categorie, i) => (
-                          <DropdownItem key={i}>{categorie.name}</DropdownItem>
+                          <DropdownItem key={i}>{categorie}</DropdownItem>
+                        ))}
+                      </DropdownMenu>
+                    </Dropdown>
+                  </li>
+                  <li className="nav-item">
+                    <Dropdown
+                      isOpen={this.state.dropdownProduct}
+                      toggle={this.handleProduct}
+                    >
+                      <DropdownToggle
+                        tag="span"
+                        onClick={this.handleProduct}
+                        data-toggle="dropdown"
+                        aria-expanded={this.state.dropdownProduct}
+                        className="nav-link pointer"
+                      >
+                        Product Type <i className="fas fa-chevron-down" />
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        {this.state.product_type.map((type, i) => (
+                          <DropdownItem key={i}>{type}</DropdownItem>
                         ))}
                       </DropdownMenu>
                     </Dropdown>
