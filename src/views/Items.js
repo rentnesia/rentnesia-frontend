@@ -25,7 +25,7 @@ class Items extends Component {
             </nav>
             <div className="row">
               <Filter />
-              <List />
+              <List category={pageName} />
             </div>
           </div>
         </div>

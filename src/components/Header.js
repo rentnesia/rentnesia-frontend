@@ -176,7 +176,7 @@ class Header extends Component {
                             }, 2000);
                           }}
                         >
-                          Log Out
+                          <span className="ml-5px">Log Out</span>
                         </DropdownItem>
                       </DropdownMenu>
                     </Dropdown>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
   Dropdown,
   DropdownMenu,
@@ -23,22 +24,30 @@ class Search extends Component {
       product_type: ["Smart Device", "Smartphone", "Laptops", "Tv"],
       newItems: [
         {
+          id: 1,
           image: "lenovo.jpg",
+          category: "Electronic",
           name: "Lenovo Ideapad 330",
           price: "349000"
         },
         {
+          id: 2,
           image: "honda.jpg",
+          category: "Vehicle",
           name: "Honda Dio 110",
           price: "599000"
         },
         {
+          id: 3,
           image: "bajaj.jpg",
+          category: "Vehicle",
           name: "Bajaj Dominar 400 ABS",
           price: "1499000"
         },
         {
+          id: 4,
           image: "macbook.jpg",
+          category: "Electronic",
           name: "Macbook Pro 2018",
           price: "899000"
         }
@@ -109,7 +118,9 @@ class Search extends Component {
                       </DropdownToggle>
                       <DropdownMenu>
                         {this.state.categories.map((categorie, i) => (
-                          <DropdownItem key={i}>{categorie}</DropdownItem>
+                          <DropdownItem key={i}>
+                            <span className="ml-5px">{categorie}</span>
+                          </DropdownItem>
                         ))}
                       </DropdownMenu>
                     </Dropdown>
@@ -130,7 +141,9 @@ class Search extends Component {
                       </DropdownToggle>
                       <DropdownMenu>
                         {this.state.product_type.map((type, i) => (
-                          <DropdownItem key={i}>{type}</DropdownItem>
+                          <DropdownItem key={i}>
+                            <span className="ml-5px">{type}</span>
+                          </DropdownItem>
                         ))}
                       </DropdownMenu>
                     </Dropdown>
@@ -151,7 +164,11 @@ class Search extends Component {
             <div className="row my-30px">
               {this.state.newItems.map((item, i) => (
                 <div key={i} className="col-3">
-                  <div className="card w-100">
+                  <Link
+                    to={`/items/${item.category}/${item.id}`}
+                    className="card w-100"
+                    onClick={this.props.handle}
+                  >
                     <img
                       src={`/images/items/${item.image}`}
                       className="card-img-top"
@@ -164,7 +181,7 @@ class Search extends Component {
                         <b className="text-w600">Rp.{item.price}</b>
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>

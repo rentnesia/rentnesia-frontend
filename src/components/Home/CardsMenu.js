@@ -25,7 +25,6 @@ class CardsMenu extends Component {
                 key={i}
                 to={`/items/${card.name}`}
                 className="card text-center"
-                params={{ name: card.name }}
               >
                 <div
                   className="card-body"

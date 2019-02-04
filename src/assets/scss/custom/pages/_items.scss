@@ -1,5 +1,6 @@
 .items {
-  padding-top: 14vh;
+  padding-top: 13vh;
+  padding-bottom: 5vh;
   min-height: 100vh;
   .container {
     // border-top: 1px solid #ccc;
@@ -19,8 +20,9 @@
       transition: box-shadow 0.25s ease 0s, transform 0.25s ease 0s,
         -webkit-transform 0.25s ease 0s;
       cursor: pointer;
+      text-decoration: none;
+      color: #282828;
       &:hover {
-        z-index: 21;
         -webkit-transform: scale(1.05);
         transform: scale(1.05);
         box-shadow: 1.2rem 1.5rem 5rem 0 rgba(0, 0, 0, 0.25);
