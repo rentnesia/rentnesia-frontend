@@ -12,12 +12,34 @@ class Search extends Component {
     this.state = {
       dropdownOpen: false,
       categories: [
-        "Furniture",
-        "Electronic",
-        "Apparel",
-        "Vehicle",
-        "Appliances",
-        "Kid's"
+        { image: "furniture.png", name: "Furniture" },
+        { image: "electronics.png", name: "Electronic" },
+        { image: "apparel.png", name: "Apparel" },
+        { image: "vehicle.png", name: "Vehicle" },
+        { image: "appliances.png", name: "Appliances" },
+        { image: "kids.png", name: "Kid's" }
+      ],
+      newItems: [
+        {
+          image: "lenovo.jpg",
+          name: "Lenovo Ideapad 330",
+          price: "349000"
+        },
+        {
+          image: "honda.jpg",
+          name: "Honda Dio 110",
+          price: "599000"
+        },
+        {
+          image: "bajaj.jpg",
+          name: "Bajaj Dominar 400 ABS",
+          price: "1499000"
+        },
+        {
+          image: "macbook.jpg",
+          name: "Macbook Pro 2018",
+          price: "899000"
+        }
       ]
     };
   }
@@ -80,7 +102,7 @@ class Search extends Component {
                       </DropdownToggle>
                       <DropdownMenu>
                         {this.state.categories.map((categorie, i) => (
-                          <DropdownItem>{categorie}</DropdownItem>
+                          <DropdownItem key={i}>{categorie.name}</DropdownItem>
                         ))}
                       </DropdownMenu>
                     </Dropdown>
@@ -93,9 +115,30 @@ class Search extends Component {
         <div className="result">
           <div className="container">
             <div className="row">
-              <div className="col-12 item-newest">
-                <h1>sakdaslkdj</h1>
+              <div className="col-12">
+                <h5 className="text-normal">Newly Launched</h5>
+                <div className="small-border-left" />
               </div>
+            </div>
+            <div className="row my-30px">
+              {this.state.newItems.map((item, i) => (
+                <div key={i} className="col-3">
+                  <div className="card w-100">
+                    <img
+                      src={`/images/items/${item.image}`}
+                      className="card-img-top"
+                      alt={item.name}
+                    />
+                    <div className="card-body text-center">
+                      <h6 className="card-title">{item.name}</h6>
+                      <p className="card-text text-size-12">
+                        Starting from{" "}
+                        <b className="text-w600">Rp.{item.price}</b>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

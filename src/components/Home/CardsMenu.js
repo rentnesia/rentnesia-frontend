@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class CardsMenu extends Component {
   constructor(props) {
@@ -20,7 +21,12 @@ class CardsMenu extends Component {
         <div className="container">
           <div className="row">
             {this.state.cards.map((card, i) => (
-              <div key={i} className="card text-center">
+              <Link
+                key={i}
+                to={`/items/${card.name}`}
+                className="card text-center"
+                params={{ name: card.name }}
+              >
                 <div
                   className="card-body"
                   style={{ paddingLeft: 0, paddingRight: 0 }}
@@ -29,12 +35,12 @@ class CardsMenu extends Component {
                   <div className="small-border" />
                   <img
                     src={`/images/cards-home/${card.image}`}
-                    height="50vw"
+                    height="80vw"
                     className="mt-10px"
                     alt={card.name}
                   />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

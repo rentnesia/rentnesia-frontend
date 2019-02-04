@@ -85,6 +85,7 @@ class Header extends Component {
 
   render() {
     const { login } = this.props.state.login;
+
     let name;
     if (sessionStorage.getItem("userInfoDecrypted")) {
       name = sessionStorage.getItem("userInfoDecrypted").split('"')[1];
@@ -118,10 +119,12 @@ class Header extends Component {
                     </DropdownToggle>
                     <DropdownMenu className="row categories-header text-center">
                       {this.state.categories.map((item, i) => (
-                        <div
+                        <Link
                           key={i}
                           className="col-6 item-categorie d-flex justify-content-center align-items-center"
                           style={{ height: "100px" }}
+                          to={`/items/${item.name}`}
+                          params={{ name: item.name }}
                         >
                           <div>
                             <img
@@ -131,7 +134,7 @@ class Header extends Component {
                             />
                             <h6 className="my-10px">{item.name}</h6>
                           </div>
-                        </div>
+                        </Link>
                       ))}
                     </DropdownMenu>
                   </Dropdown>

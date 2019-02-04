@@ -69,9 +69,23 @@
     }
   }
   .result {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: flex-start;
+    // flex-wrap: wrap;
     padding: 3vh 0;
+    .card {
+      box-shadow: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: box-shadow 0.25s ease 0s, transform 0.25s ease 0s,
+        -webkit-transform 0.25s ease 0s;
+      cursor: pointer;
+      &:hover {
+        z-index: 21;
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        box-shadow: 1.2rem 1.5rem 5rem 0 rgba(0, 0, 0, 0.25);
+      }
+    }
   }
 }

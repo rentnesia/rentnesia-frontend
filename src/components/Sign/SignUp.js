@@ -41,7 +41,7 @@ class SignIn extends Component {
       message.error("Email wajib diisi!");
     } else if (password.length <= 0) {
       message.error("Password wajib diisi!");
-    } else if (password.length <= 8) {
+    } else if (password.length < 8) {
       message.error("Password minimal 8 karakter!");
     } else if (password !== this.state.confirmPassword) {
       message.error("Password tidak sama!");

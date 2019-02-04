@@ -86,7 +86,6 @@ export const tryLogin = props => dispatch => {
 
   login(form.email, form.password)
     .then(result => {
-      console.log(result);
       dispatch({
         type: SUCCESS_LOGIN,
         payload: result.name

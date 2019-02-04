@@ -46,3 +46,14 @@ body {
     outline: 0 !important;
   }
 }
+
+.small-border-left {
+  background-color: #dc3226;
+  height: 2px;
+  width: 50px;
+  border-top: none;
+  border-radius: 50px;
+  text-align: left;
+  margin-top: 5px;
+  transition-duration: 0.2s;
+}
