@@ -1,0 +1,70 @@
+.items {
+  padding-top: 14vh;
+  min-height: 100vh;
+  .container {
+    // border-top: 1px solid #ccc;
+    // padding-top: 2vh;
+    .breadcrumb {
+      background: #f3f3f3;
+      .breadcrumb-item {
+        a {
+          color: #282828 !important;
+        }
+      }
+    }
+    .card-item {
+      box-shadow: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: box-shadow 0.25s ease 0s, transform 0.25s ease 0s,
+        -webkit-transform 0.25s ease 0s;
+      cursor: pointer;
+      &:hover {
+        z-index: 21;
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05);
+        box-shadow: 1.2rem 1.5rem 5rem 0 rgba(0, 0, 0, 0.25);
+      }
+      .cat-tag-main {
+        position: absolute;
+        top: 15px;
+        left: -10px;
+        color: #fff;
+        font-size: 12px;
+        padding: 5px 10px;
+        z-index: 2;
+        &::before {
+          border-left: 14px solid transparent;
+          border-right: 14px solid transparent;
+          content: "";
+          height: 100%;
+          position: absolute;
+          right: -14px;
+          top: 0;
+        }
+        &::after {
+          border-left: 10px solid transparent;
+          border-right: 0 solid transparent;
+          content: "";
+          height: 100%;
+          position: absolute;
+          top: 28px;
+          left: 0;
+        }
+      }
+      .cat-new-tag {
+        background: #009bff;
+        &::before {
+          border-bottom: 14px solid #009bff;
+          border-top: 14px solid #009bff;
+        }
+        &::after {
+          border-top: 7px solid #167dc0;
+        }
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

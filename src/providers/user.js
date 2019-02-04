@@ -1,34 +1,43 @@
-import axios from 'axios';
+import axios from "axios";
 
-import { HOST } from '../config';
+import { HOST } from "../config";
+export const login = (email, password) =>
+  new Promise((resolve, reject) => {
+    axios
+      .post(`${HOST}/api/v1/auth/login`, {
+        email,
+        password
+      })
+      .then(res => {
+        if (res.data.token) {
+          sessionStorage.setItem("jwtToken", res.data.token);
+        }
+        return resolve(res.data);
+      })
+      .catch(error => reject(error.response));
+  });
 
-// export const login = (username, password) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .post(`${HOST}/api/user/login`, {
-//         username,
-//         password,
-//       })
-//       .then(res => {
-//         if (res.data.success) {
-//           sessionStorage.setItem('jwtToken', res.data.userinfo);
-//         }
-//         return resolve(res.data);
-//       })
-//       .catch(error => reject(error.response));
-//   });
-
-// export const createUser = ({ username, password, level }) =>
-//   new Promise((resolve, reject) => {
-//     axios
-//       .post(`${HOST}/api/user/create`, {
-//         username,
-//         password,
-//         level,
-//       })
-//       .then(res => resolve(res.data))
-//       .catch(err => reject(err.response));
-//   });
+export const createUser = ({
+  user_type,
+  first_name,
+  last_name,
+  username,
+  email,
+  password
+}) =>
+  new Promise((resolve, reject) => {
+    axios
+      .post(`${HOST}/api/v1/auth/signup`, {
+        user_type,
+        first_name,
+        last_name,
+        username,
+        email,
+        password
+      })
+      .then(res => resolve(res.data))
+      .catch(err => reject(err.response));
+  });
 
 // export const deleteUser = ({ id }) =>
 //   new Promise((resolve, reject) => {

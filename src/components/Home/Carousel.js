@@ -9,7 +9,7 @@ const options = {
     `<img src='/images/carousel/button/chevron-right.png'>`
   ],
   nav: true,
-  rewind: true,
+  loop: true,
   autoplay: true,
   dots: false,
   autoplayTimeout: 5000

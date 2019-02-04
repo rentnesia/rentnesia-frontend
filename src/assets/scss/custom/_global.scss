@@ -24,3 +24,36 @@ body {
     margin: 10px auto;
   }
 }
+
+.ant-message {
+  z-index: 2000 !important;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  &:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #d10404;
+    border-radius: 0;
+  }
+  &:hover,
+  &:focus {
+    color: #000;
+    text-decoration: none;
+    background-color: rgba(209, 4, 4, 0.3) !important;
+    border-radius: 0;
+    outline: 0 !important;
+  }
+}
+
+.small-border-left {
+  background-color: #dc3226;
+  height: 2px;
+  width: 50px;
+  border-top: none;
+  border-radius: 50px;
+  text-align: left;
+  margin-top: 5px;
+  transition-duration: 0.2s;
+}
