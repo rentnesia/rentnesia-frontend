@@ -9,21 +9,21 @@ class Article extends Component {
     this.state = {
       articles: [
         {
-          title: "Why Rentals are a lifestyle choice",
+          title: "Living Lighter Solve Space Problems",
           short_title: "Why Rentals",
           id: "why-rentals",
           icon: "question",
           data: [
             {
-              title: "Rent to Own or Return anytime",
+              title: "Store Items Securely",
               desc:
-                "We all understand test drive ! how about a flexiblity of an extended test drive where you can rent the product for givenmonths and then choose to either buy or return at yourconvenience.",
+                "By signing up, scheduling & preparing your first pickup items for free, simply select a delivery time that works for you, and we'll come to your door or lobby and store them securely in our warehouse.",
               image: "test.svg"
             },
             {
-              title: "Pay Rentals cheaper than EMI",
+              title: "Rent to Own or Return Anytime",
               desc:
-                "Since we buy directly from manufacturers at substantially lower prices, our rentals turn out to be cheaper than EMIs for all tenures. Ensuring you more savings!",
+                "How about a flexiblity of an extended test drive where you can rent the product for given months and then choose to either buy or return at your convenience. Ensuring you more savings!",
               image: "test.svg"
             },
             {
@@ -43,45 +43,45 @@ class Article extends Component {
             {
               title: "Free Relocation",
               desc:
-                "We all understand test drive ! how about a flexiblity of an extended test drive where you can rent the product for givenmonths and then choose to either buy or return at yourconvenience.",
+                "Change houses or even cities, without worrying about your subscription. At Rentnesia, your subscription travels with you, be it within the city or to the other major cities we cater to.",
               image: "test.svg"
             },
             {
               title: "Product Swaps",
               desc:
-                "We all understand test drive ! how about a flexiblity of an extended test drive where you can rent the product for givenmonths and then choose to either buy or return at yourconvenience.",
+                "Bored with the same look? You can easily exchange products for a new one of same or higher value.Get a brand-new look with the same great convenience! (Exclusive only for 36 Months tenure).",
               image: "test.svg"
             },
             {
               title: "Free Maintenance",
               desc:
-                "We all understand test drive ! how about a flexiblity of an extended test drive where you can rent the product for givenmonths and then choose to either buy or return at yourconvenience.",
+                "Is regular maintenance a pain and costly issue in owning a product? Switch to RMI (rental monthly instalment) and get free maintenance - every year!.",
               image: "test.svg"
             }
           ]
         },
         {
-          title: "What Our Process",
-          short_title: "Processes",
+          title: "How it Works",
+          short_title: "Works",
           icon: "lightbulb",
           id: "processes",
           data: [
             {
-              title: "Free Relocation",
+              title: "Join The Community",
               desc:
-                "We all understand test drive ! how about a flexiblity of an extended test drive where you can rent the product for givenmonths and then choose to either buy or return at yourconvenience.",
+                "Verifying your profile by share a few essential details with us to be a part of our community and enjoy faster delivery of your orders. Also, don't worry your details are safe with us.",
               image: "test.svg"
             },
             {
-              title: "Product Swaps",
+              title: "Track your delivery",
               desc:
-                "We all understand test drive ! how about a flexiblity of an extended test drive where you can rent the product for givenmonths and then choose to either buy or return at yourconvenience.",
+                "Our processes are transparent which help you see real-time updates of your items. Enjoy a seamless delivery experience in your rentnesia journey.",
               image: "test.svg"
             },
             {
-              title: "Free Maintenance",
+              title: "Store, Share and Renting with Rentnesia",
               desc:
-                "We all understand test drive ! how about a flexiblity of an extended test drive where you can rent the product for givenmonths and then choose to either buy or return at yourconvenience.",
+                "Rentnesia comes to you to pick up the items you don't use every day, and takes them back to a secure facility. After that, Our Team unpacks, photographs, catalogs each item and uploads the images and information to your account.",
               image: "test.svg"
             }
           ]
