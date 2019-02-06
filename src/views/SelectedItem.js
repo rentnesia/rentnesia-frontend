@@ -21,7 +21,7 @@ class SelectedItem extends Component {
       image: "macbook.jpg",
       owner_img: "gibran.png",
       owner: "Gibran",
-      name: "MacBook Biasa 2018 Beneran Asli Ashiiaappp",
+      name: "MacBook 2018",
       category: "Electronic",
       product_type: "Laptop",
       desc:
@@ -149,8 +149,17 @@ class SelectedItem extends Component {
                       </div>
                     </div>
                   </div>
-                  <button type="submit" className="btn btn-block btn-success">
-                    Rent Now
+                  <button
+                    type="submit"
+                    className="btn btn-block btn-animate btn-animate-vertical btn-danger"
+                  >
+                    <span>
+                      RENT NOW
+                      <i
+                        className="icon fas fa-truck-moving"
+                        aria-hidden="true"
+                      />
+                    </span>
                   </button>
                 </form>
               </div>

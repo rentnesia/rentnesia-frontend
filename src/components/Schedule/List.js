@@ -7,8 +7,7 @@ import {
   CardImg,
   Row,
   Col,
-  Container,
-  Button
+  Container
 } from "reactstrap";
 
 class List extends Component {
@@ -43,15 +42,18 @@ class List extends Component {
                 </CardTitle>
                 <CardImg
                   className="dashboard-empty-items-img"
-                  src="/images/schedule-img-items.png"
+                  src="/images/schedule.svg"
                 />
-                <CardText>
+                <CardText className="mt-20px">
                   You have no items in storage. Schedule an appointment and let
                   us do the work for you.
                 </CardText>
-                <Button color="success" className="btn-schedule">
-                  Schedule Appointment
-                </Button>
+                <button className="btn btn-animate btn-animate-vertical btn-danger">
+                  <span>
+                    SCHEDULE APPOINTMENT
+                    <i className="icon fas fa-arrow-right" aria-hidden="true" />
+                  </span>
+                </button>
               </CardBody>
             </Card>
           </Col>
