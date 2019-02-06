@@ -80,6 +80,8 @@
       transition: box-shadow 0.25s ease 0s, transform 0.25s ease 0s,
         -webkit-transform 0.25s ease 0s;
       cursor: pointer;
+      color: #282828;
+      text-decoration: none;
       &:hover {
         z-index: 21;
         -webkit-transform: scale(1.05);

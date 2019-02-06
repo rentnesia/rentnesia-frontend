@@ -16,17 +16,12 @@ const Routes = () => (
     <Route exact path={`${process.env.PUBLIC_URL}/`} component={Home} />
     <Route
       exact
-      path={`${process.env.PUBLIC_URL}/schedule`}
+      path={`${process.env.PUBLIC_URL}/user/schedule`}
       component={Schedule}
     />
     <Route
       exact
-      path={`${process.env.PUBLIC_URL}/checkout`}
-      component={Checkout}
-    />
-    <Route
-      exact
-      path={`${process.env.PUBLIC_URL}/profile`}
+      path={`${process.env.PUBLIC_URL}/user/profile`}
       component={Profile}
     />
     <Route

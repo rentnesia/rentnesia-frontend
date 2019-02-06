@@ -166,6 +166,34 @@ class Header extends Component {
                         <i className="fas fa-chevron-down" />
                       </DropdownToggle>
                       <DropdownMenu>
+                        {/* <DropdownItem
+                          onClick={() => {
+                            this.props.push(
+                              `${process.env.PUBLIC_URL}/user/profile`
+                            );
+                          }}
+                        >
+                          <div className="ml-10px d-flex align-items-center">
+                            <i className="fas fa-user" />
+                            <span className="ml-10px text-size-14">
+                              Profile
+                            </span>
+                          </div>
+                        </DropdownItem> */}
+                        <DropdownItem
+                          onClick={() => {
+                            this.props.push(
+                              `${process.env.PUBLIC_URL}/user/schedule`
+                            );
+                          }}
+                        >
+                          <div className="ml-10px d-flex align-items-center">
+                            <i className="fas fa-calendar" />
+                            <span className="ml-10px text-size-14">
+                              Schedule
+                            </span>
+                          </div>
+                        </DropdownItem>
                         <DropdownItem
                           onClick={() => {
                             message.loading("Mohon Tunggu");
@@ -176,7 +204,12 @@ class Header extends Component {
                             }, 2000);
                           }}
                         >
-                          Log Out
+                          <div className="ml-10px d-flex align-items-center">
+                            <i className="fas fa-sign-out-alt" />
+                            <span className="ml-10px text-size-14">
+                              Sign Out
+                            </span>
+                          </div>
                         </DropdownItem>
                       </DropdownMenu>
                     </Dropdown>

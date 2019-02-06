@@ -1,6 +1,6 @@
+import "antd/dist/antd.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import "antd/dist/antd.css";
 import "./assets/scss/index.scss";
 
 import React from "react";

@@ -1,0 +1,21 @@
+.selected-item {
+  padding-top: 11vh;
+  padding-bottom: 20vh;
+  min-height: 100vh;
+  color: #282828;
+  .color-grey {
+    color: #ccc !important;
+  }
+  .navigation {
+    cursor: pointer;
+  }
+  .img-item {
+    width: 100%;
+    border-radius: 10px;
+  }
+  .img-owner {
+    width: 75px;
+    height: 75px;
+    border-radius: 75px;
+  }
+}
