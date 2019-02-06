@@ -10,8 +10,8 @@ class Article extends Component {
       articles: [
         {
           title: "Living Lighter Solve Space Problems",
-          short_title: "Why Rentals",
-          id: "why-rentals",
+          short_title: "Why Rentnesia",
+          id: "why-rentnesia",
           icon: "question",
           data: [
             {
@@ -64,7 +64,7 @@ class Article extends Component {
           title: "How it Works",
           short_title: "Works",
           icon: "lightbulb",
-          id: "processes",
+          id: "works",
           data: [
             {
               title: "Join The Community",
@@ -88,7 +88,7 @@ class Article extends Component {
         }
       ],
       swap: ["white", "w-grey", "white", "black"],
-      scrollspyParent: ["why-rentals", "benefits", "processes"]
+      scrollspyParent: ["why-rentnesia", "benefits", "works"]
     };
   }
 
