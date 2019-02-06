@@ -26,6 +26,11 @@ const Routes = () => (
     />
     <Route
       exact
+      path={`${process.env.PUBLIC_URL}/checkout`}
+      component={Checkout}
+    />
+    <Route
+      exact
       path={`${process.env.PUBLIC_URL}/items/:category`}
       component={Items}
     />

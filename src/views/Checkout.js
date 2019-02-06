@@ -64,25 +64,25 @@ class Checkout extends Component {
                 <h2>Details</h2>
               </div>
               <div className="checkout-details-section">
-                <a class="btn btn-light" href="#" role="button">
+                <a class="btn btn-light" href="/" role="button">
                   New Items
                 </a>
               </div>
               <div className="checkout-details-section">
                 <h5>Address</h5>
-                <a class="btn btn-light" href="#" role="button">
+                <a class="btn btn-light" href="/" role="button">
                   Add a location
                 </a>
               </div>
               <div className="checkout-details-section">
                 <h5>Pick-up</h5>
-                <a class="btn btn-light" href="#" role="button">
+                <a class="btn btn-light" href="/" role="button">
                   Pickup time
                 </a>
               </div>
               <div className="checkout-details-section">
                 <h5>Payment</h5>
-                <a class="btn btn-light" href="#" role="button">
+                <a class="btn btn-light" href="/" role="button">
                   Please enter payment information
                 </a>
               </div>
