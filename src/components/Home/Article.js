@@ -18,19 +18,19 @@ class Article extends Component {
               title: "Store Items Securely",
               desc:
                 "By signing up, scheduling & preparing your first pickup items for free, simply select a delivery time that works for you, and we'll come to your door or lobby and store them securely in our warehouse.",
-              image: "test.svg"
+              image: "red_store_items.svg"
             },
             {
               title: "Rent to Own or Return Anytime",
               desc:
                 "How about a flexiblity of an extended test drive where you can rent the product for given months and then choose to either buy or return at your convenience. Ensuring you more savings!",
-              image: "test.svg"
+              image: "red_rent_own_return.svg"
             },
             {
               title: "Save Huge Capital Commitment",
               desc:
                 "Why spend on products that lose up to 50% of its value the moment you purchase it? Renting gives you an opportunity to invest that money on experiences or places where you can get high returns.",
-              image: "test.svg"
+              image: "red_save_capital.svg"
             }
           ]
         },
@@ -44,19 +44,19 @@ class Article extends Component {
               title: "Free Relocation",
               desc:
                 "Change houses or even cities, without worrying about your subscription. At Rentnesia, your subscription travels with you, be it within the city or to the other major cities we cater to.",
-              image: "test.svg"
+              image: "red_relocation.svg"
             },
             {
               title: "Product Swaps",
               desc:
-                "Bored with the same look? You can easily exchange products for a new one of same or higher value.Get a brand-new look with the same great convenience! (Exclusive only for 36 Months tenure).",
-              image: "test.svg"
+                "Bored with the same look? You can easily exchange products for a new one of same or higher value. Get a brand-new look with the same great convenience! (Exclusive only for 36 Months tenure).",
+              image: "red_product_swaps.svg"
             },
             {
               title: "Free Maintenance",
               desc:
                 "Is regular maintenance a pain and costly issue in owning a product? Switch to RMI (rental monthly instalment) and get free maintenance - every year!.",
-              image: "test.svg"
+              image: "red_free_maintenance.svg"
             }
           ]
         },
@@ -70,19 +70,19 @@ class Article extends Component {
               title: "Join The Community",
               desc:
                 "Verifying your profile by share a few essential details with us to be a part of our community and enjoy faster delivery of your orders. Also, don't worry your details are safe with us.",
-              image: "test.svg"
+              image: "red_join_verified_community.svg"
             },
             {
               title: "Track your delivery",
               desc:
                 "Our processes are transparent which help you see real-time updates of your items. Enjoy a seamless delivery experience in your rentnesia journey.",
-              image: "test.svg"
+              image: "red_track_items.svg"
             },
             {
               title: "Store, Share and Renting with Rentnesia",
               desc:
-                "Rentnesia comes to you to pick up the items you don't use every day, and takes them back to a secure facility. After that, Our Team unpacks, photographs, catalogs each item and uploads the images and information to your account.",
-              image: "test.svg"
+                "Rentnesia comes to you to pick up the items you don't use every day, and takes them back to a secure facility. After that, Our Team unpacks, photographs, catalogs each item by uploads the images and information to your account.",
+              image: "red_renting_with_rentnesia.svg"
             }
           ]
         }
