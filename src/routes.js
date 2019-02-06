@@ -7,6 +7,7 @@ import Schedule from "./views/Schedule";
 import Profile from "./views/Profile";
 import Items from "./views/Items";
 import SelectedItem from "./views/SelectedItem";
+import Checkout from "./views/Checkout";
 
 const Routes = () => (
   <div>
@@ -17,6 +18,11 @@ const Routes = () => (
       exact
       path={`${process.env.PUBLIC_URL}/schedule`}
       component={Schedule}
+    />
+    <Route
+      exact
+      path={`${process.env.PUBLIC_URL}/checkout`}
+      component={Checkout}
     />
     <Route
       exact

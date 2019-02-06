@@ -1,0 +1,218 @@
+.checkout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.checkout .checkout-details {
+  margin: 20px;
+  margin-top: 80px;
+  margin-left: 80px;
+}
+.checkout .checkout-details .checkout-title {
+  font-size: 36px;
+  color: black;
+  font-weight: 400;
+}
+
+.checkout .checkout-details .checkout-title-details {
+  font-size: 24px;
+  color: black;
+  font-weight: 400;
+  border-bottom: 1px solid #e1e4e6;
+  padding: 5px 0;
+}
+
+.checkout .checkout-details .checkout-details-section {
+  margin: 10px;
+}
+.checkout .checkout-details .checkout-details-section h5 {
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+}
+
+.checkout .checkout-pricing {
+  margin: 20px;
+  margin-top: 80px;
+  margin-right: 80px;
+}
+
+.checkout .checkout-pricing .checkout-pricing-section {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-bottom: 1px solid #e1e4e6;
+  padding: 5px 0;
+}
+
+.checkout .checkout-pricing .checkout-pricing-section .price-label {
+  display: inline-block;
+  flex: 1 1;
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+  display: block;
+}
+
+.checkout .checkout-pricing .checkout-pricing-section .price-rent {
+  display: inline-block;
+  flex: 1 1;
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+  display: block;
+}
+.checkout .checkout-pricing .checkout-pricing-section p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.checkout .checkout-pricing .checkout-pricing-section .button-apply {
+  margin: 15px;
+  flex-grow: 1;
+}
+
+.overlay-maroon {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(rgba(117, 35, 5, 0.95), rgba(44, 13, 1, 0.95));
+}
+
+.flex-fix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout .flex-fix .button-form {
+  height: 12rem;
+  width: 12rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  transition: box-shadow 0.25s, transform 0.25s ease;
+  cursor: pointer;
+}
+
+.checkout .flex-fix .button-form .location {
+  background: linear-gradient(45deg, #e8e525, #f1e423 50%, #aea41b);
+}
+
+.checkout .flex-fix .button-form .pickup {
+  background: linear-gradient(45deg, #6bb78e, #63db9b 50%, #408b63);
+}
+
+.checkout .location {
+  position: absolute;
+  right: -40%;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  transition: left 0.5s ease;
+}
+
+.checkout .location.selected {
+  right: 0;
+}
+
+.checkout .location.close {
+  right: -100%;
+}
+
+.checkout .location .btn-close {
+  position: absolute;
+  font-size: 2rem;
+  top: 3vh;
+  left: 3vw;
+  cursor: pointer;
+}
+
+.checkout .location .top,
+.checkout .location .bottom {
+  margin: 7vh 0;
+  padding: 0 5vw;
+}
+
+.checkout .location .bottom form .btn-submit {
+  border-radius: 0;
+  padding: 0.6rem 1rem;
+}
+
+.checkout .location .bottom form input[type="email"],
+form input[type="text"],
+form input[type="number"] {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-size: inherit;
+  border-radius: 0;
+  background: hsla(0, 0%, 100%, 0.3);
+  color: #fff;
+  outline: none;
+  border: 1px solid transparent;
+  transition: border 0.25s ease;
+  padding: 0.5rem 1rem;
+}
+
+.checkout .location .bottom form input[type="email"]::placeholder,
+form input[type="text"]::placeholder,
+form input[type="number"]::placeholder {
+  color: rgb(195, 195, 195);
+}
+
+.checkout .location .bottom form input[type="email"]:focus,
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-size: inherit;
+  border-radius: 0;
+  color: #fff;
+  background: hsla(0, 0%, 100%, 0.3);
+  outline: none;
+  border: 1px solid transparent;
+  transition: border 0.25s ease;
+  padding: 0.5rem 1rem;
+}
+
+.checkout .pickup {
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  transition: left 0.5s ease;
+}
+
+.checkout .pickup .pickup.selected {
+  left: 0;
+}
+
+.checkout .pickup.close {
+  left: -100%;
+}
+
+.checkout .pickup.btn-close {
+  position: absolute;
+  font-size: 2rem;
+  top: 3vh;
+  right: 3vw;
+  cursor: pointer;
+}
+
+.checkout .pickup .top,
+.checkout .pickup .bottom {
+  margin: 7vh 0;
+}
