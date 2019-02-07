@@ -1,5 +1,6 @@
 .location,
-.payment {
+.payment,
+.pickup {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +19,8 @@
 .location .top,
 .location .bottom,
 .payment .top,
-.payment .bottom {
+.payment .bottom .pickup .top,
+.pickup .bottom {
   margin: 7vh 0;
   padding: 0 0vw;
 }

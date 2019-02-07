@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Button } from "reactstrap";
+import { Input, Button, FormGroup, Label } from "reactstrap";
 
 import Shell from "../components/Shell";
 
@@ -98,10 +98,64 @@ const PickupForm = () => (
   <div className="pickup">
     <div className="col-12 overlay-maroon">
       <div className="top">
+        <i className="fas fa-truck fa-7x" />
         <h2>Choose a Pickup Time</h2>
       </div>
       <div className="bottom">
-        <form className="form" />
+        <form className="form">
+          <FormGroup tag="fieldset">
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 2:00 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 2:30 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 3:00 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 3:30 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 4:00 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 4:30 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 5:00 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 7:00 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 7:30 pm
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" /> 8:00 pm
+              </Label>
+            </FormGroup>
+          </FormGroup>
+        </form>
       </div>
     </div>
   </div>
@@ -269,7 +323,7 @@ class Checkout extends Component {
                   <div className="btn-close" onClick={this.closePickup}>
                     <i className="fa fa-times" />
                   </div>
-                  <h1>Pickup</h1>
+                  <PickupForm />
                 </OffCanvas>
               </div>
 
