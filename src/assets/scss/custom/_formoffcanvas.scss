@@ -1,0 +1,107 @@
+.location,
+.payment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  color: #fff;
+  transition: left 0.5s ease;
+}
+
+.overlay-maroon {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(rgba(117, 35, 5, 0.95), rgba(44, 13, 1, 0.95));
+}
+
+.location .top,
+.location .bottom,
+.payment .top,
+.payment .bottom {
+  margin: 7vh 0;
+  padding: 0 0vw;
+}
+
+.location .bottom form input[type="email"],
+form input[type="text"],
+form input[type="number"] {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-size: inherit;
+  border-radius: 0;
+  background: hsla(0, 0%, 100%, 0.3);
+  color: #fff;
+  outline: none;
+  border: 1px solid transparent;
+  transition: border 0.25s ease;
+  padding: 0.5rem 1rem;
+}
+
+.location .bottom form input[type="email"]::placeholder,
+form input[type="text"]::placeholder,
+form input[type="number"]::placeholder {
+  color: rgb(195, 195, 195);
+}
+
+.location .bottom form input[type="email"]:focus,
+form input[type="text"]:focus,
+form input[type="number"]:focus {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-size: inherit;
+  border-radius: 0;
+  color: #fff;
+  background: hsla(0, 0%, 100%, 0.3);
+  outline: none;
+  border: 1px solid transparent;
+  transition: border 0.25s ease;
+  padding: 0.5rem 1rem;
+}
+
+.location .bottom .button-form,
+.payment .bottom .button-form {
+  border-radius: 0;
+  padding: 0.6rem 1rem;
+}
+
+.payment .bottom form input[type="text"],
+form input[type="number"] {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-size: inherit;
+  border-radius: 0;
+  background: hsla(0, 0%, 100%, 0.3);
+  color: #fff;
+  outline: none;
+  border: 1px solid transparent;
+  transition: border 0.25s ease;
+  padding: 0.5rem 1rem;
+}
+
+.payment .bottom form input[type="text"]::placeholder,
+form input[type="number"]::placeholder {
+  color: rgb(195, 195, 195);
+}
+
+.payment .bottom form input[type="text"]:focus,
+form input[type="number"]:focus {
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-size: inherit;
+  border-radius: 0;
+  color: #fff;
+  background: hsla(0, 0%, 100%, 0.3);
+  outline: none;
+  border: 1px solid transparent;
+  transition: border 0.25s ease;
+  padding: 0.5rem 1rem;
+}
