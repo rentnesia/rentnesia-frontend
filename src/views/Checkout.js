@@ -155,6 +155,11 @@ const PickupForm = () => (
               </Label>
             </FormGroup>
           </FormGroup>
+          <div className="button-form">
+            <button className="btn btn-sm btn-success btn-submit">
+              <span>Select this time</span>
+            </button>
+          </div>
         </form>
       </div>
     </div>
