@@ -88,29 +88,10 @@
   justify-content: center;
 }
 
-.checkout .flex-fix .button-form {
-  height: 12rem;
-  width: 12rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: none;
-  transition: box-shadow 0.25s, transform 0.25s ease;
-  cursor: pointer;
-}
-
-.checkout .flex-fix .button-form .location {
-  background: linear-gradient(45deg, #e8e525, #f1e423 50%, #aea41b);
-}
-
-.checkout .flex-fix .button-form .pickup {
-  background: linear-gradient(45deg, #6bb78e, #63db9b 50%, #408b63);
-}
-
 .checkout .location {
-  position: absolute;
-  right: -40%;
-  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
+
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
@@ -119,7 +100,7 @@
 }
 
 .checkout .location.selected {
-  right: 0;
+  left: 0;
 }
 
 .checkout .location.close {
