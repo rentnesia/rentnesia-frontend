@@ -4,8 +4,13 @@ import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { goBack } from "connected-react-router";
 import PropTypes from "prop-types";
-// import t from "typy";
+import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import { message } from "antd";
 
+// import t from "typy";
+import axios from "axios"
+
+import { Input } from "reactstrap"
 import Shell from "../components/Shell";
 
 import { getItemById } from "../modules/item";
@@ -27,7 +32,9 @@ class SelectedItem extends Component {
     startDate: null,
     endDate: null,
     disc_week: 10,
-    disc_month: 22
+    disc_month: 22,
+    modal: false
+
   };
 
   componentDidMount() {
@@ -40,8 +47,34 @@ class SelectedItem extends Component {
     // this.props.goBack(`${process.env.PUBLIC_URL}/items/${category}`);
   };
 
+  handleClick = (e) => {
+    e.preventDefault()
+    const itemId = this.props.match.params.itemId
+    const userId = sessionStorage.getItem('userIdDecrypted');
+
+    const body = {
+      "startDate": this.state.startDate,
+      "endDate": this.state.startDate,
+      "item_id": parseInt(itemId),
+      "renter_id": parseInt(userId),
+      "location": this.state.location,
+      "status": "waiting"
+    }
+
+    axios.post(`${process.env.REACT_APP_API_URL}/api/v1/history`, body).then((res) => {
+      this.setState({ modal: true })
+    }).catch((err) => {
+      message.error("First Name wajib diisi!");
+    })
+  }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value })
+  }
+
   render() {
     const data = this.props.state.detail.data;
+    console.log(data)
 
     return (
       <Shell>
@@ -130,6 +163,9 @@ class SelectedItem extends Component {
                           id="location"
                           aria-describedby="location"
                           placeholder="Location"
+                          name="location"
+                          onChange={this.handleChange}
+                          value={this.state.location}
                         />
                         <div className="input-group-append">
                           <span className="input-group-text">
@@ -139,13 +175,33 @@ class SelectedItem extends Component {
                       </div>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="location">Dates</label>
+                      <label htmlFor="location">Start Date</label>
                       <div className="input-group">
-                        <input
-                          className="form-control"
-                          id="dates"
-                          aria-describedby="location"
-                          placeholder="Dates"
+                        <Input
+                          type="date"
+                          id="exampleDate"
+                          placeholder="date placeholder"
+                          name="startDate"
+                          onChange={this.handleChange}
+                          value={this.state.startDate}
+                        />
+                        <div className="input-group-append">
+                          <span className="input-group-text">
+                            <i className="fas fa-calendar" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="location">End Date</label>
+                      <div className="input-group">
+                        <Input
+                          type="date"
+                          id="exampleDate"
+                          placeholder="date placeholder"
+                          name="endDate"
+                          onChange={this.handleChange}
+                          value={this.state.endDate}
                         />
                         <div className="input-group-append">
                           <span className="input-group-text">
@@ -157,7 +213,18 @@ class SelectedItem extends Component {
                     <button
                       type="submit"
                       className="btn btn-block btn-animate btn-animate-vertical btn-danger"
+                      onClick={this.handleClick}
                     >
+                      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
+                        <ModalBody>
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
+                          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                        </ModalFooter>
+                      </Modal>
                       <span>
                         RENT NOW
                         <i
