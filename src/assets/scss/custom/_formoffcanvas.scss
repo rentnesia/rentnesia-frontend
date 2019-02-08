@@ -19,7 +19,8 @@
 .location .top,
 .location .bottom,
 .payment .top,
-.payment .bottom .pickup .top,
+.payment .bottom,
+.pickup .top,
 .pickup .bottom {
   margin: 7vh 0;
   padding: 0 0vw;
@@ -107,4 +108,27 @@ form input[type="number"]:focus {
   border: 1px solid transparent;
   transition: border 0.25s ease;
   padding: 0.5rem 1rem;
+}
+
+.btn-close {
+  font-size: 2rem;
+  top: 3vh;
+  right: 3vw;
+  cursor: pointer;
+  color: #fff;
+  background: radial-gradient(rgba(73, 22, 4, 0.95), rgba(51, 15, 1, 0.95));
+}
+
+.pickup .top .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.875rem;
+}
+
+.pickup .bottom .form .fieldset {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 10px;
 }

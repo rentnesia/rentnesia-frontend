@@ -22,10 +22,11 @@
   font-weight: 400;
   border-bottom: 1px solid #e1e4e6;
   padding: 5px 0;
+  margin-top: 10px;
 }
 
 .checkout .checkout-details .checkout-details-section {
-  margin: 10px;
+  margin: 20px;
 }
 .checkout .checkout-details .checkout-details-section h5 {
   font-size: 18px;
@@ -35,16 +36,15 @@
 
 .checkout .checkout-pricing {
   margin: 20px;
-  margin-top: 80px;
+  margin-top: 135px;
   margin-right: 80px;
 }
-
 .checkout .checkout-pricing .checkout-pricing-section {
   display: flex;
   flex-flow: row;
   align-items: center;
   border-bottom: 1px solid #e1e4e6;
-  padding: 5px 0;
+  padding: 1px 0;
 }
 
 .checkout .checkout-pricing .checkout-pricing-section .price-label {
@@ -71,7 +71,13 @@
   margin-inline-end: 0px;
 }
 
-.checkout .checkout-pricing .checkout-pricing-section .button-apply {
+.checkout .checkout-pricing .checkout-pricing-section-button {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 1px 0;
+}
+.checkout .checkout-pricing .checkout-pricing-section-button .button-apply {
   margin: 15px;
   flex-grow: 1;
 }

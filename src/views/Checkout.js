@@ -98,20 +98,15 @@ const PickupForm = () => (
   <div className="pickup">
     <div className="col-12 overlay-maroon">
       <div className="top">
-        <i className="fas fa-truck fa-7x" />
+        <i className="icon fas fa-truck fa-7x" />
         <h2>Choose a Pickup Time</h2>
       </div>
       <div className="bottom">
         <form className="form">
-          <FormGroup tag="fieldset">
+          <FormGroup className="fieldset">
             <FormGroup check>
               <Label check>
                 <Input type="radio" name="radio1" /> 2:00 pm
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" /> 2:30 pm
               </Label>
             </FormGroup>
             <FormGroup check>
@@ -121,17 +116,7 @@ const PickupForm = () => (
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="radio" name="radio1" /> 3:30 pm
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
                 <Input type="radio" name="radio1" /> 4:00 pm
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" /> 4:30 pm
               </Label>
             </FormGroup>
             <FormGroup check>
@@ -142,11 +127,6 @@ const PickupForm = () => (
             <FormGroup check>
               <Label check>
                 <Input type="radio" name="radio1" /> 7:00 pm
-              </Label>
-            </FormGroup>
-            <FormGroup check>
-              <Label check>
-                <Input type="radio" name="radio1" /> 7:30 pm
               </Label>
             </FormGroup>
             <FormGroup check>
@@ -349,7 +329,7 @@ class Checkout extends Component {
                   onClose={this.closePayment}
                   labelledby="menu-button"
                 >
-                  <div className="btn-close" onClick={this.closePickup}>
+                  <div className="btn-close" onClick={this.closePayment}>
                     <i className="fa fa-times" />
                   </div>
                   <PaymentForm />
@@ -385,7 +365,7 @@ class Checkout extends Component {
                 <p className="price-label">Total</p>
                 <p className="price-rent">IDR ...</p>
               </div>
-              <div className="checkout-pricing-section">
+              <div className="checkout-pricing-section-button">
                 <button className="button-apply btn btn-sm btn-success btn-submit">
                   <span>Add an Address</span>
                 </button>
