@@ -2,6 +2,13 @@
   padding-top: 13vh;
   padding-bottom: 5vh;
   min-height: 100vh;
+  .card-title-items {
+    font-weight: 700;
+    color: #33435a;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: flex-start;
+  }
   .user-profile {
     padding: 5vh 20vw;
     display: flex;
@@ -17,11 +24,6 @@
     text-align: center;
     border: 1px solid #d6d5dc;
     background-color: #f4f4f4;
-    .card-title {
-      font-weight: 700;
-      color: #33435a;
-      font-size: 1rem;
-    }
   }
 
   .dashboard-empty-items {
@@ -37,14 +39,6 @@
     background-size: 100%;
     width: 270px;
     height: 120px;
-  }
-
-  .card-title-items {
-    font-weight: 700;
-    color: #33435a;
-    font-size: 1.25rem;
-    display: flex;
-    justify-content: flex-start;
   }
 
   .account-details {
@@ -135,4 +129,10 @@
       margin: 0;
     }
   }
+}
+
+.table-history {
+  display: inherit;
+  height: 100px;
+  overflow: auto;
 }

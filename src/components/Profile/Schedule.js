@@ -32,48 +32,50 @@ class Schedule extends Component {
       <Row>
         <Col>
           <Card className="dashboard-empty-appointment">
-            <CardTitle className="card-title-items">{}</CardTitle>
-            {data ? (
-              <table className="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>StartDate</th>
-                    <th>EndDate</th>
-                    <th>Location</th>
-                    <th>Renter</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((item, i) => (
-                    <tr key={i}>
-                      <td>{item.item.name}</td>
-                      <td>{dateFns.format(item.startDate, "DD/MMM/YYYY")}</td>
-                      <td>{dateFns.format(item.endDate, "DD/MMM/YYYY")}</td>
-                      <td>{item.location || "Not Set"}</td>
-                      <td>{item.user.first_name}</td>
-                      <td>
-                        <span
-                          className={`badge badge-${
-                            item.status === "success"
-                              ? item.status === "waiting"
-                                ? "warning"
-                                : "success"
-                              : "danger"
-                          }`}
-                        >
-                          {item.status}
-                        </span>
-                      </td>
+            <CardBody>
+              <CardTitle className="card-title-items pb-10px">
+                History Item
+              </CardTitle>
+              {data ? (
+                <table className="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>StartDate</th>
+                      <th>EndDate</th>
+                      <th>Location</th>
+                      <th>Renter</th>
+                      <th>Status</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <div>
-                <span className="far fa-calendar-check fa-3x" />
-                <CardBody>
+                  </thead>
+                  <tbody className="table-history">
+                    {data.map((item, i) => (
+                      <tr key={i}>
+                        <td>{item.item.name}</td>
+                        <td>{dateFns.format(item.startDate, "DD/MMM/YYYY")}</td>
+                        <td>{dateFns.format(item.endDate, "DD/MMM/YYYY")}</td>
+                        <td>{item.location || "Not Set"}</td>
+                        <td>{item.user.first_name}</td>
+                        <td>
+                          <span
+                            className={`badge badge-${
+                              item.status === "success"
+                                ? item.status === "waiting"
+                                  ? "warning"
+                                  : "success"
+                                : "danger"
+                            }`}
+                          >
+                            {item.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : (
+                <div>
+                  <span className="far fa-calendar-check fa-3x" />
                   <CardTitle className="card-title">
                     You have no upcoming appointments
                   </CardTitle>
@@ -81,9 +83,9 @@ class Schedule extends Component {
                     When you're ready, you can schedule one <a href="/">here</a>
                     .
                   </CardText>
-                </CardBody>
-              </div>
-            )}
+                </div>
+              )}
+            </CardBody>
           </Card>
         </Col>
       </Row>
