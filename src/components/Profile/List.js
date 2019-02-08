@@ -15,6 +15,8 @@ import {
 
 import { listItemByUsers } from "../../modules/item";
 
+import AddItem from "./AddItem";
+
 class List extends Component {
   static propTypes = {
     state: PropTypes.object,
@@ -26,7 +28,9 @@ class List extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      modal: false
+    };
   }
 
   componentDidMount() {
@@ -35,6 +39,12 @@ class List extends Component {
       this.props.listItemByUsers(id);
     }
   }
+
+  toggleModal = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
 
   render() {
     const { data, total } = this.props.state.items;
@@ -46,7 +56,13 @@ class List extends Component {
             <Card className="dashboard-empty-items">
               <CardBody>
                 <CardTitle className="card-title-items">
-                  Your Items ({total})
+                  <span>Your Items ({total})</span>
+                  <button
+                    className="btn btn-sm btn-danger"
+                    onClick={this.toggleModal}
+                  >
+                    Add Item
+                  </button>
                 </CardTitle>
                 {data ? (
                   <div className="row">
@@ -111,6 +127,7 @@ class List extends Component {
             </Card>
           </Col>
         </Row>
+        <AddItem toggle={this.toggleModal} status={this.state.modal} />
       </div>
     );
   }
