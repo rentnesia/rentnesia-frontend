@@ -6,9 +6,13 @@ import Filter from "../components/Items/Filter";
 import List from "../components/Items/List";
 
 class Items extends Component {
-  state = {};
+  state = {
+    filter: ""
+  };
+
   render() {
     const pageName = this.props.match.params.category;
+    const pageId = this.props.location.state.id;
     return (
       <Shell>
         <div className="items">
@@ -24,8 +28,8 @@ class Items extends Component {
               </ol>
             </nav>
             <div className="row">
-              <Filter />
-              <List category={pageName} />
+              <Filter id={pageId} />
+              <List id={pageId} />
             </div>
           </div>
         </div>

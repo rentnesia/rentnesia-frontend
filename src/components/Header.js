@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 
 import { logout } from "../modules/login";
+import { listCategories } from "../modules/category";
 
 import Sign from "./Sign";
 import Search from "./Search";
@@ -23,7 +24,8 @@ class Header extends Component {
   static propTypes = {
     state: PropTypes.object,
     logout: PropTypes.func,
-    push: PropTypes.func
+    push: PropTypes.func,
+    listCategories: PropTypes.func
   };
 
   static defaultProps = {
@@ -36,12 +38,12 @@ class Header extends Component {
     dropdownCategory: false,
     search: false,
     categories: [
-      { image: "furniture.png", name: "Furniture" },
-      { image: "electronics.png", name: "Electronic" },
-      { image: "apparel.png", name: "Apparel" },
-      { image: "vehicle.png", name: "Vehicle" },
-      { image: "appliances.png", name: "Appliances" },
-      { image: "kids.png", name: "Kid's" }
+      "furniture.png",
+      "electronics.png",
+      "apparel.png",
+      "vehicle.png",
+      "appliances.png",
+      "kids.png"
     ]
   };
 
@@ -57,6 +59,8 @@ class Header extends Component {
         logoNav.removeClass("logo-primary").addClass("logo");
       }
     });
+
+    this.props.listCategories();
   }
 
   toggleDropdownCategory = () => {
@@ -85,6 +89,7 @@ class Header extends Component {
 
   render() {
     const { login } = this.props.state.login;
+    const { data } = this.props.state.category;
 
     let name;
     if (sessionStorage.getItem("userInfoDecrypted")) {
@@ -118,17 +123,21 @@ class Header extends Component {
                       CATEGORIES <i className="fas fa-chevron-down" />
                     </DropdownToggle>
                     <DropdownMenu className="row categories-header text-center">
-                      {this.state.categories.map((item, i) => (
+                      {data.map((item, i) => (
                         <Link
                           key={i}
                           className="col-6 item-categorie d-flex justify-content-center align-items-center"
                           style={{ height: "100px" }}
-                          to={`/items/${item.name}`}
-                          params={{ name: item.name }}
+                          to={{
+                            pathname: `/items/${item.name}`,
+                            state: { id: `${item.id}` }
+                          }}
                         >
                           <div>
                             <img
-                              src={`/images/cards-home/${item.image}`}
+                              src={`/images/cards-home/${
+                                this.state.categories[i]
+                              }`}
                               height="35px"
                               alt={item.name}
                             />
@@ -183,14 +192,14 @@ class Header extends Component {
                         <DropdownItem
                           onClick={() => {
                             this.props.push(
-                              `${process.env.PUBLIC_URL}/user/schedule`
+                              `${process.env.PUBLIC_URL}/user/profile`
                             );
                           }}
                         >
                           <div className="ml-10px d-flex align-items-center">
-                            <i className="fas fa-calendar" />
+                            <i className="fas fa-user" />
                             <span className="ml-10px text-size-14">
-                              Schedule
+                              Profile
                             </span>
                           </div>
                         </DropdownItem>
@@ -242,14 +251,16 @@ class Header extends Component {
 
 const _state = state => ({
   state: {
-    login: state.login
+    login: state.login,
+    category: state.category.list
   }
 });
 const _action = dispatch =>
   bindActionCreators(
     {
       logout,
-      push
+      push,
+      listCategories
     },
     dispatch
   );

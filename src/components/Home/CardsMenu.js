@@ -44,7 +44,10 @@ class CardsMenu extends Component {
             {data.map((item, i) => (
               <Link
                 key={i}
-                to={`/items/${item.name}`}
+                to={{
+                  pathname: `/items/${item.name}`,
+                  state: { id: `${item.id}` }
+                }}
                 className="card text-center"
               >
                 <div

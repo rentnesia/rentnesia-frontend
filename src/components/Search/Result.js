@@ -1,41 +1,29 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+import { listItems, getItemById } from "../../modules/item";
+
 class Result extends Component {
+  static propTypes = {
+    state: PropTypes.object,
+    listItems: PropTypes.func,
+    getItemById: PropTypes.func
+  };
+
+  static defaultProps = {
+    state: {}
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      newItems: [
-        {
-          id: 1,
-          image: "lenovo.jpg",
-          category: "Electronic",
-          name: "Lenovo Ideapad 330",
-          price: "349000"
-        },
-        {
-          id: 2,
-          image: "honda.jpg",
-          category: "Vehicle",
-          name: "Honda Dio 110",
-          price: "599000"
-        },
-        {
-          id: 3,
-          image: "bajaj.jpg",
-          category: "Vehicle",
-          name: "Bajaj Dominar 400 ABS",
-          price: "1499000"
-        },
-        {
-          id: 4,
-          image: "macbook.jpg",
-          category: "Electronic",
-          name: "Macbook Pro 2018",
-          price: "899000"
-        }
-      ]
-    };
+    this.state = {};
+  }
+
+  componentDidMount() {
+    // this.props.listItems("DESC");
   }
 
   render() {
@@ -44,27 +32,38 @@ class Result extends Component {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <h5 className="text-normal">Newly Launched</h5>
-              <div className="small-border-left" />
+              {this.props.data.length > 0 ? (
+                <div>
+                  <h5 className="text-normal">Result</h5>
+                  <div className="small-border-left" />
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           </div>
           <div className="row my-30px">
-            {this.state.newItems.map((item, i) => (
+            {this.props.data.map((item, i) => (
               <div key={i} className="col-3">
+                {/* {console.log(item)} */}
                 <Link
-                  to={`/items/${item.category}/${item.id}`}
-                  className="card w-100"
-                  onClick={this.props.handle}
+                  to={`/items/${item.product_type.category_id}/${item.id}`}
+                  className="card w-100 my-15px"
+                  onClick={() => {
+                    this.props.handle();
+                    this.props.getItemById(item.id);
+                  }}
                 >
                   <img
-                    src={`/images/items/${item.image}`}
+                    src={`/images/items/${item.picture}`}
                     className="card-img-top"
                     alt={item.name}
                   />
                   <div className="card-body text-center">
                     <h6 className="card-title">{item.name}</h6>
                     <p className="card-text text-size-12">
-                      Starting from <b className="text-w600">Rp.{item.price}</b>
+                      Starting from{" "}
+                      <b className="text-w600">Rp.{`${item.price_per_day}`}</b>
                     </p>
                   </div>
                 </Link>
@@ -77,4 +76,18 @@ class Result extends Component {
   }
 }
 
-export default Result;
+const _state = state => ({
+  state: {}
+});
+const _action = dispatch =>
+  bindActionCreators(
+    {
+      listItems,
+      getItemById
+    },
+    dispatch
+  );
+export default connect(
+  _state,
+  _action
+)(Result);

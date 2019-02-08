@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import Shell from "../components/Shell";
-import Detail from "../components/Profile/Detail";
+import List from "../components/Profile/List";
 
 class Profile extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class Profile extends Component {
   render() {
     return (
       <Shell>
-        <Detail />
+        <List />
       </Shell>
     );
   }

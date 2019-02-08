@@ -2,36 +2,48 @@ import axios from "axios";
 
 import { HOST } from "../config";
 
-export const createCategory = ({ name }) =>
+export const createHistory = ({
+  startDate,
+  endDate,
+  location,
+  status,
+  renter_id,
+  item_id
+}) =>
   new Promise((resolve, reject) => {
     axios
-      .post(`${HOST}/api/v1/category`, {
-        name
+      .post(`${HOST}/api/v1/history`, {
+        startDate,
+        endDate,
+        location,
+        status,
+        renter_id,
+        item_id
       })
       .then(res => resolve(res.data))
       .catch(err => reject(err.response));
   });
 
-export const deleteCategory = id =>
+export const updateHistory = (id, data) =>
   new Promise((resolve, reject) => {
     axios
-      .delete(`${HOST}/api/v1/category/${id}`)
+      .put(`${HOST}/api/history/${id}`, data)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err.data));
+  });
+
+export const listHistoryById = id =>
+  new Promise((resolve, reject) => {
+    axios
+      .get(`${HOST}/api/v1/history/${id}`)
       .then(res => resolve(res.data))
       .catch(err => reject(err.response));
   });
 
-export const listCategory = () =>
+export const listHistory = () =>
   new Promise((resolve, reject) => {
     axios
-      .get(`${HOST}/api/v1/category`)
-      .then(res => resolve(res.data))
-      .catch(err => reject(err.response));
-  });
-
-export const listProductById = id =>
-  new Promise((resolve, reject) => {
-    axios
-      .get(`${HOST}/api/v1/category/${id}`)
+      .get(`${HOST}/api/v1/history`)
       .then(res => resolve(res.data))
       .catch(err => reject(err.response));
   });

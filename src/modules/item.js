@@ -1,25 +1,30 @@
-import { listProductById } from "../providers/category";
 import {
-  createProductType,
-  deleteProductType,
-  listProductType
-} from "../providers/product_type";
+  createItem,
+  deleteItem,
+  listItemByUser,
+  listItem,
+  listItemById
+} from "../providers/item";
 import { message } from "antd";
 // import { resolve } from 'url';
 
-const LIST = "@product_type/LIST";
-const LIST_SUCCESS = "@product_type/LIST_SUCCESS";
-const LIST_ERROR = "@product_type/LIST_ERROR";
+const LIST = "@item/LIST";
+const LIST_SUCCESS = "@item/LIST_SUCCESS";
+const LIST_ERROR = "@item/LIST_ERROR";
 
-const CREATE = "@product_type/CREATE";
-const CREATE_SUCCESS = "@product_type/CREATE_SUCCESS";
-const CREATE_ERROR = "@product_type/CREATE_ERROR";
+const CREATE = "@item/CREATE";
+const CREATE_SUCCESS = "@item/CREATE_SUCCESS";
+const CREATE_ERROR = "@item/CREATE_ERROR";
 
-const DELETE = "@product_type/DELETE";
-const DELETE_SUCCESS = "@product_type/DELETE_SUCCESS";
-const DELETE_ERROR = "@product_type/DELETE_ERROR";
+const DELETE = "@item/DELETE";
+const DELETE_SUCCESS = "@item/DELETE_SUCCESS";
+const DELETE_ERROR = "@item/DELETE_ERROR";
 
-const SET_FORM = "@product_type/SET_FORM";
+const DETAIL = "@item/DETAIL";
+const DETAIL_SUCCESS = "@item/DETAIL_SUCCESS";
+const DETAIL_ERROR = "@item/DETAIL_ERROR";
+
+const SET_FORM = "@item/SET_FORM";
 
 const initialState = {
   list: {
@@ -31,9 +36,21 @@ const initialState = {
   },
   create: {
     form: {
+      userId: null,
       name: "",
-      category_id: null
+      description: "",
+      label: "",
+      price_per_day: "",
+      status: "",
+      picture: "",
+      product_type_id: null
     },
+    pending: false,
+    error: false,
+    errorMessage: ""
+  },
+  detail: {
+    data: [],
     pending: false,
     error: false,
     errorMessage: ""
@@ -136,20 +153,50 @@ export default function(state = initialState, action) {
           pending: false
         }
       };
+    case DETAIL:
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          pending: true,
+          error: false
+        }
+      };
+    case DETAIL_SUCCESS:
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          pending: false,
+          data: action.payload.data
+        }
+      };
+    case DETAIL_ERROR:
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          pending: false,
+          error: true,
+          errorMessage: action.payload
+        }
+      };
     default:
       return state;
   }
 }
 
-export const listProductTypes = () => dispatch => {
+export const listItems = (
+  sort = "ASC",
+  category = "",
+  product_type = "",
+  search = ""
+) => dispatch => {
   dispatch({ type: LIST });
-  listProductType()
+  listItem(sort, category, product_type, search)
     .then(data => {
-      let total = data.product_type.length;
-      dispatch({
-        type: LIST_SUCCESS,
-        payload: { data: data.product_type, total }
-      });
+      let total = data.item.length;
+      dispatch({ type: LIST_SUCCESS, payload: { data: data.item, total } });
     })
     .catch(err => {
       let msg =
@@ -158,27 +205,49 @@ export const listProductTypes = () => dispatch => {
     });
 };
 
-export const listProductsById = id => dispatch => {
+export const listItemByUsers = userId => dispatch => {
   dispatch({ type: LIST });
-  listProductById(id)
+  listItemByUser(userId)
     .then(data => {
-      let total = data.data.length;
-      dispatch({
-        type: LIST_SUCCESS,
-        payload: { data: data.data, total }
-      });
+      let total = data.item.length;
+      dispatch({ type: LIST_SUCCESS, payload: { data: data.item, total } });
     })
     .catch(err => {
       let msg =
         "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
-      dispatch({ type: LIST_ERROR, payload: err });
+      if (err && err != null) {
+        msg = err;
+        if (msg.isArray()) {
+          msg = msg[0].toString();
+        }
+      }
+      dispatch({ type: LIST_ERROR, payload: msg });
     });
 };
 
-export const createProductTypes = form => dispatch => {
+export const getItemById = id => dispatch => {
+  dispatch({ type: DETAIL });
+  listItemById(id)
+    .then(data => {
+      dispatch({ type: DETAIL_SUCCESS, payload: { data: data.item } });
+    })
+    .catch(err => {
+      let msg =
+        "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
+      if (err && err != null) {
+        msg = err;
+        if (msg.isArray()) {
+          msg = msg[0].toString();
+        }
+      }
+      dispatch({ type: DETAIL_ERROR, payload: msg });
+    });
+};
+
+export const createItems = form => dispatch => {
   dispatch({ type: CREATE });
   return new Promise((resolve, reject) => {
-    createProductType(form)
+    createItem(form)
       .then(result => {
         dispatch({ type: CREATE_SUCCESS });
         message.success("Berhasil Sukses");
@@ -193,10 +262,10 @@ export const createProductTypes = form => dispatch => {
       });
   });
 };
-export const deleteProductTypes = ({ id }) => dispatch => {
+export const deleteItems = ({ id }) => dispatch => {
   dispatch({ type: DELETE });
   return new Promise((resolve, reject) => {
-    deleteProductType({ id })
+    deleteItem({ id })
       .then(result => {
         dispatch({ type: DELETE_SUCCESS });
         return resolve(result);

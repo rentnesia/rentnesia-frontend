@@ -25,7 +25,8 @@
     "react-scrollspy": "^3.3.5",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "typy": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -115,7 +115,7 @@ class Article extends Component {
             className="scrollspy-custom"
             items={this.state.scrollspyParent}
             currentClassName="active"
-            offset={-180}
+            offset={-200}
           >
             {this.state.articles.map((article, i) => (
               <li key={i}>

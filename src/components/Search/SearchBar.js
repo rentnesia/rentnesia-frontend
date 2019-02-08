@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class SearchBar extends Component {
   state = {};
+
   render() {
     return (
       <div className="search">
@@ -17,6 +18,7 @@ class SearchBar extends Component {
                     className="form-control form-control-lg search-input"
                     type="text"
                     placeholder="Search starting here..."
+                    onKeyUp={this.props.handleSearch}
                   />
                 </div>
               </div>

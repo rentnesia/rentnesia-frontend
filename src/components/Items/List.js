@@ -1,43 +1,38 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import PropTypes from "prop-types";
+
+import { listItems } from "../../modules/item";
 
 class List extends Component {
-  state = {
-    newItems: [
-      {
-        id: 1,
-        image: "lenovo.jpg",
-        name: "Lenovo Ideapad 330",
-        price: "349000"
-      },
-      {
-        id: 2,
-        image: "honda.jpg",
-        name: "Honda Dio 110",
-        price: "599000"
-      },
-      {
-        id: 3,
-        image: "bajaj.jpg",
-        name: "Bajaj Dominar 400 ABS",
-        price: "1499000"
-      },
-      {
-        id: 4,
-        image: "macbook.jpg",
-        name: "Macbook Pro 2018",
-        price: "899000"
-      }
-    ]
+  static propTypes = {
+    state: PropTypes.object,
+    listItems: PropTypes.func
   };
+
+  static defaultProps = {
+    state: {
+      data: []
+    }
+  };
+
+  state = {};
+
+  componentDidMount() {
+    const categoryId = this.props.id;
+    this.props.listItems("DESC", categoryId);
+  }
+
   render() {
     return (
       <div className="col-9">
         <div className="row">
-          {this.state.newItems.map((item, i) => (
+          {this.props.state.items.data.map((item, i) => (
             <div key={i} className="col-4 my-15px">
               <Link
-                to={`/items/${this.props.category}/${item.id}`}
+                to={`/items/${item.product_type.category_id}/${item.id}`}
                 className="card card-item w-100"
               >
                 {i <= 1 ? (
@@ -48,7 +43,7 @@ class List extends Component {
                   ""
                 )}
                 <img
-                  src={`/images/items/${item.image}`}
+                  src={`/images/items/${item.picture}`}
                   className="card-img-top"
                   alt={item.name}
                 />
@@ -57,7 +52,8 @@ class List extends Component {
                     {item.name}
                   </h6>
                   <p className="card-text text-size-12">
-                    Starting from <b className="text-w600">Rp.{item.price}</b>
+                    Starting from{" "}
+                    <b className="text-w600">Rp.{item.price_per_day}</b>
                     /month
                   </p>
                 </div>
@@ -70,4 +66,19 @@ class List extends Component {
   }
 }
 
-export default List;
+const _state = state => ({
+  state: {
+    items: state.item.list
+  }
+});
+const _action = dispatch =>
+  bindActionCreators(
+    {
+      listItems
+    },
+    dispatch
+  );
+export default connect(
+  _state,
+  _action
+)(List);

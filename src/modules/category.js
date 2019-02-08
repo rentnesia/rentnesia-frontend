@@ -144,12 +144,7 @@ export const listCategories = () => dispatch => {
     .catch(err => {
       let msg =
         "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
-      if (err && err != null) {
-        msg = err.data.message;
-        if (msg.isArray()) {
-          msg = msg[0].toString();
-        }
-      }
+
       dispatch({ type: LIST_ERROR, payload: msg });
     });
 };
@@ -172,10 +167,10 @@ export const createCategories = name => dispatch => {
       });
   });
 };
-export const deleteCategories = ({ id }) => dispatch => {
+export const deleteCategories = id => dispatch => {
   dispatch({ type: DELETE });
   return new Promise((resolve, reject) => {
-    deleteCategory({ id })
+    deleteCategory(id)
       .then(result => {
         dispatch({ type: DELETE_SUCCESS });
         return resolve(result);
@@ -191,12 +186,9 @@ export const deleteCategories = ({ id }) => dispatch => {
   });
 };
 
-export const setForm = (name, value) => dispatch => {
+export const setForm = value => dispatch => {
   dispatch({
     type: SET_FORM,
-    payload: {
-      name,
-      value
-    }
+    payload: value
   });
 };

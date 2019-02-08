@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { HOST } from "../config";
 
-export const createCategory = ({ name }) =>
+export const createProductType = ({ name }) =>
   new Promise((resolve, reject) => {
     axios
       .post(`${HOST}/api/v1/product_type`, {
@@ -12,7 +12,7 @@ export const createCategory = ({ name }) =>
       .catch(err => reject(err.response));
   });
 
-export const deleteCategory = ({ id }) =>
+export const deleteProductType = ({ id }) =>
   new Promise((resolve, reject) => {
     axios
       .delete(`${HOST}/api/v1/product_type/${id}`)
@@ -20,7 +20,7 @@ export const deleteCategory = ({ id }) =>
       .catch(err => reject(err.response));
   });
 
-export const listCategory = () =>
+export const listProductType = () =>
   new Promise((resolve, reject) => {
     axios
       .get(`${HOST}/api/v1/product_type`)

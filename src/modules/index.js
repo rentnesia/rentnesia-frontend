@@ -5,6 +5,7 @@ import user from "./user";
 import login from "./login";
 import category from "./category";
 import product_type from "./product_type";
+import item from "./item";
 
 export default history =>
   combineReducers({
@@ -12,5 +13,6 @@ export default history =>
     user,
     login,
     category,
-    product_type
+    product_type,
+    item
   });

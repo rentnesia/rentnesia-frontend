@@ -47,7 +47,10 @@ class Filter extends Component {
                     </DropdownToggle>
                     <DropdownMenu>
                       {this.state.categories.map((categorie, i) => (
-                        <DropdownItem key={i}>
+                        <DropdownItem
+                          key={i}
+                          onClick={this.props.handleSelectCategory}
+                        >
                           <span className="ml-5px">{categorie}</span>
                         </DropdownItem>
                       ))}
@@ -70,7 +73,10 @@ class Filter extends Component {
                     </DropdownToggle>
                     <DropdownMenu>
                       {this.state.product_type.map((type, i) => (
-                        <DropdownItem key={i}>
+                        <DropdownItem
+                          key={i}
+                          onClick={this.props.handleSelectProductType}
+                        >
                           <span className="ml-5px">{type}</span>
                         </DropdownItem>
                       ))}
