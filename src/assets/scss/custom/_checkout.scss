@@ -1,0 +1,83 @@
+.checkout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.checkout .checkout-details {
+  margin: 20px;
+  margin-top: 80px;
+  margin-left: 80px;
+}
+.checkout .checkout-details .checkout-title {
+  font-size: 36px;
+  color: black;
+  font-weight: 400;
+}
+
+.checkout .checkout-details .checkout-title-details {
+  font-size: 24px;
+  color: black;
+  font-weight: 400;
+  border-bottom: 1px solid #e1e4e6;
+  padding: 5px 0;
+  margin-top: 10px;
+}
+
+.checkout .checkout-details .checkout-details-section {
+  margin: 20px;
+}
+.checkout .checkout-details .checkout-details-section h5 {
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+}
+
+.checkout .checkout-pricing {
+  margin: 20px;
+  margin-top: 135px;
+  margin-right: 80px;
+}
+.checkout .checkout-pricing .checkout-pricing-section {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  border-bottom: 1px solid #e1e4e6;
+  padding: 1px 0;
+}
+
+.checkout .checkout-pricing .checkout-pricing-section .price-label {
+  display: inline-block;
+  flex: 1 1;
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+  display: block;
+}
+
+.checkout .checkout-pricing .checkout-pricing-section .price-rent {
+  display: inline-block;
+  flex: 1 1;
+  font-size: 18px;
+  color: black;
+  font-weight: 300;
+  display: block;
+}
+.checkout .checkout-pricing .checkout-pricing-section p {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+.checkout .checkout-pricing .checkout-pricing-section-button {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  padding: 1px 0;
+}
+.checkout .checkout-pricing .checkout-pricing-section-button .button-apply {
+  margin: 15px;
+  flex-grow: 1;
+}

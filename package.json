@@ -17,6 +17,7 @@
     "popper.js": "^1.14.6",
     "react": "^16.7.0",
     "react-anchor-link-smooth-scroll": "^1.0.11",
+    "react-aria-offcanvas": "^1.1.10",
     "react-dom": "^16.7.0",
     "react-owl-carousel2": "^0.3.0",
     "react-redux": "^6.0.0",
