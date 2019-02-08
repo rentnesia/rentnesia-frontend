@@ -95,7 +95,7 @@ class SignIn extends Component {
             </div>
           </div>
         </div>
-        <div className="md-form" style={{ marginTop: "-5px" }}>
+        <div className="md-form">
           <Input
             type="text"
             name="username"
