@@ -47,3 +47,11 @@ export const listHistory = () =>
       .then(res => resolve(res.data))
       .catch(err => reject(err.response));
   });
+
+export const listHistoryByUserId = id =>
+  new Promise((resolve, reject) => {
+    axios
+      .get(`${HOST}/api/v1/users/${id}/history`)
+      .then(res => resolve(res.data))
+      .catch(err => reject(err.response));
+  });

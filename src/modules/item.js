@@ -188,12 +188,13 @@ export default function(state = initialState, action) {
 
 export const listItems = (
   sort = "ASC",
+  not_user = "",
   category = "",
   product_type = "",
   search = ""
 ) => dispatch => {
   dispatch({ type: LIST });
-  listItem(sort, category, product_type, search)
+  listItem(sort, not_user, category, product_type, search)
     .then(data => {
       let total = data.item.length;
       dispatch({ type: LIST_SUCCESS, payload: { data: data.item, total } });
@@ -215,12 +216,6 @@ export const listItemByUsers = userId => dispatch => {
     .catch(err => {
       let msg =
         "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
-      if (err && err != null) {
-        msg = err;
-        if (msg.isArray()) {
-          msg = msg[0].toString();
-        }
-      }
       dispatch({ type: LIST_ERROR, payload: msg });
     });
 };

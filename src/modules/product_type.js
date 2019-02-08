@@ -169,8 +169,8 @@ export const listProductsById = id => dispatch => {
       });
     })
     .catch(err => {
-      let msg =
-        "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
+      // let msg =
+      //   "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
       dispatch({ type: LIST_ERROR, payload: err });
     });
 };

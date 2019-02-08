@@ -21,8 +21,13 @@ class List extends Component {
   state = {};
 
   componentDidMount() {
+    let id = sessionStorage.getItem("userIdDecrypted");
     const categoryId = this.props.id;
-    this.props.listItems("DESC", categoryId);
+    if (id) {
+      this.props.listItems("DESC", id, categoryId);
+    } else {
+      this.props.listItems("DESC", "", categoryId);
+    }
   }
 
   render() {

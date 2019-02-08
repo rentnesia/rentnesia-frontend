@@ -35,7 +35,7 @@ export const deleteItem = id =>
       .catch(err => reject(err.response));
   });
 
-export const listItemByUser = ({ userId }) =>
+export const listItemByUser = userId =>
   new Promise((resolve, reject) => {
     axios
       .get(`${HOST}/api/v1/users/${userId}/item`)
@@ -53,14 +53,15 @@ export const listItemById = id =>
 
 export const listItem = (
   sort = "ASC",
+  not_user = "",
   category = "",
   product_type = "",
-  search = ""
+  search = "",
 ) =>
   new Promise((resolve, reject) => {
     axios
       .get(
-        `${HOST}/api/v1/item?sort=${sort}&category=${category}&product_type=${product_type}&search=${search}`
+        `${HOST}/api/v1/item?sort=${sort}&category=${category}&product_type=${product_type}&search=${search}&not_user=${not_user}`
       )
       .then(res => resolve(res.data))
       .catch(err => reject(err.response));

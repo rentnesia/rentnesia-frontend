@@ -1,4 +1,4 @@
-import { createUser } from "../providers/user";
+import { createUser, listUserById } from "../providers/user";
 import { message } from "antd";
 // import { resolve } from 'url';
 
@@ -17,6 +17,10 @@ const RESET_ERROR = "@user/RESET_ERROR";
 const DELETE = "@user/DELETE";
 const DELETE_SUCCESS = "@user/DELETE_SUCCESS";
 const DELETE_ERROR = "@user/DELETE_ERROR";
+
+const DETAIL = "@user/DETAIL";
+const DETAIL_SUCCESS = "@user/DETAIL_SUCCESS";
+const DETAIL_ERROR = "@user/DETAIL_ERROR";
 
 const SET_FORM = "@user/SET_FORM";
 
@@ -43,6 +47,12 @@ const initialState = {
     errorMessage: ""
   },
   reset: {
+    pending: false,
+    error: false,
+    errorMessage: ""
+  },
+  detail: {
+    data: {},
     pending: false,
     error: false,
     errorMessage: ""
@@ -172,29 +182,49 @@ export default function(state = initialState, action) {
           pending: false
         }
       };
+    case DETAIL:
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          pending: true,
+          error: false
+        }
+      };
+    case DETAIL_SUCCESS:
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          pending: false,
+          data: action.payload.data
+        }
+      };
+    case DETAIL_ERROR:
+      return {
+        ...state,
+        detail: {
+          ...state.detail,
+          pending: false,
+          error: true,
+          errorMessage: action.payload
+        }
+      };
     default:
       return state;
   }
 }
 
-// export const listUser = ({ page, limit, search }) => dispatch => {
-//   dispatch({ type: LIST });
-//   listUsers({ page, limit, search })
-//     .then(({ data, total }) => {
-//       dispatch({ type: LIST_SUCCESS, payload: { data, total } });
-//     })
-//     .catch(err => {
-//       let msg =
-//         "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
-//       if (err && err != null) {
-//         msg = err.data.message;
-//         if (msg.isArray()) {
-//           msg = msg[0].toString();
-//         }
-//       }
-//       dispatch({ type: LIST_ERROR, payload: msg });
-//     });
-// };
+export const getUserById = id => dispatch => {
+  dispatch({ type: DETAIL });
+  listUserById(id)
+    .then(data => {
+      dispatch({ type: DETAIL_SUCCESS, payload: { data } });
+    })
+    .catch(err => {
+      dispatch({ type: DETAIL_ERROR, payload: err });
+    });
+};
 
 export const createUsers = form => dispatch => {
   dispatch({ type: CREATE });
@@ -212,8 +242,8 @@ export const createUsers = form => dispatch => {
         //     msg = msg[0].toString();
         //   }
         // }
-        // dispatch({ type: CREATE_ERROR, payload: msg });
-        // message.error(msg);
+        // dispatch({ type: CREATE_ERROR, payload: err });
+        // message.error(err);
         // return reject(result);
       })
       .catch(err => {

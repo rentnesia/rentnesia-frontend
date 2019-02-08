@@ -91,11 +91,9 @@ class Header extends Component {
     const { login } = this.props.state.login;
     const { data } = this.props.state.category;
 
-    let name;
-    if (sessionStorage.getItem("userInfoDecrypted")) {
+    let name = sessionStorage.getItem("userInfoDecrypted");
+    if (name) {
       name = sessionStorage.getItem("userInfoDecrypted").split('"')[1];
-    } else {
-      name = this.props.state.login.name;
     }
 
     return (
@@ -171,8 +169,7 @@ class Header extends Component {
                         aria-expanded={this.state.dropdownUser}
                         className="nav-link"
                       >
-                        {name.toUpperCase()}{" "}
-                        <i className="fas fa-chevron-down" />
+                        {name} <i className="fas fa-chevron-down" />
                       </DropdownToggle>
                       <DropdownMenu>
                         {/* <DropdownItem

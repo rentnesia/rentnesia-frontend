@@ -24,7 +24,7 @@ class SearchBar extends Component {
               </div>
             </div>
             <div className="col-1 d-flex justify-content-center align-items-center">
-              <div className="btn-close" onClick={this.props.handle}>
+              <div className="btn-close-search" onClick={this.props.handle}>
                 <img src="/images/close.png" width="40vw" alt="Search Icon" />
               </div>
             </div>

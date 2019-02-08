@@ -60,10 +60,18 @@ class Search extends Component {
     const { target } = e;
     const { value } = target;
 
-    this.props.listItems("DESC", "", "", value);
-    await this.setState({
-      data: this.props.state.items
-    });
+    let id = sessionStorage.getItem("userIdDecrypted");
+    if (id) {
+      this.props.listItems("DESC", id, "", "", value);
+      await this.setState({
+        data: this.props.state.items
+      });
+    } else {
+      this.props.listItems("DESC", "", "", "", value);
+      await this.setState({
+        data: this.props.state.items
+      });
+    }
   };
 
   render() {

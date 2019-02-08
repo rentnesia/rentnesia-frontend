@@ -14,6 +14,7 @@ const initialState = {
   loading: false,
   error: null,
   name: "",
+  id: 0,
   form: {
     email: "",
     password: ""
@@ -34,8 +35,7 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         login: true,
-        error: null,
-        name: action.payload
+        error: null
       };
     case FAIL_LOGIN:
       return {
@@ -88,11 +88,12 @@ export const tryLogin = props => dispatch => {
     .then(result => {
       dispatch({
         type: SUCCESS_LOGIN,
-        payload: result.name
+        payload: {}
       });
 
       sessionStorage.setItem("bearerToken", result.token);
       sessionStorage.setItem("userInfoDecrypted", JSON.stringify(result.name));
+      sessionStorage.setItem("userIdDecrypted", JSON.stringify(result.id));
 
       axios.defaults.headers = {
         Authorization: `bearer ${sessionStorage.getItem("bearerToken")}`
@@ -136,6 +137,7 @@ export const logout = () => dispatch => {
   sessionStorage.removeItem("bearerToken");
   sessionStorage.removeItem("jwtToken");
   sessionStorage.removeItem("userInfoDecrypted");
+  sessionStorage.removeItem("userIdDecrypted");
   dispatch({
     type: LOGOUT
   });

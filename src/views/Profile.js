@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 
 import Shell from "../components/Shell";
+import Schedule from "../components/Profile/Schedule";
 import List from "../components/Profile/List";
+import UserProfile from "../components/Profile/UserProfile";
 
 class Profile extends Component {
   constructor(props) {
@@ -11,7 +13,13 @@ class Profile extends Component {
   render() {
     return (
       <Shell>
-        <List />
+        <div className="profile">
+          <div className="container">
+            <UserProfile />
+            <Schedule />
+            <List />
+          </div>
+        </div>
       </Shell>
     );
   }

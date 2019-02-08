@@ -2,7 +2,8 @@ import {
   createHistory,
   listHistory,
   updateHistory,
-  listHistoryById
+  listHistoryById,
+  listHistoryByUserId
 } from "../providers/history";
 import { message } from "antd";
 // import { resolve } from 'url';
@@ -265,6 +266,26 @@ export const getHistoryById = id => dispatch => {
     });
 };
 
+export const listHistoriesByUserId = id => dispatch => {
+  dispatch({ type: LIST });
+  listHistoryByUserId(id)
+    .then(data => {
+      let total = data.history.length;
+      dispatch({ type: LIST_SUCCESS, payload: { data: data.history, total } });
+    })
+    .catch(err => {
+      let msg =
+        "Terjadi Kesalahan Saat Melakukan Koneksi dengan Server, Mohon Coba Lagi Nanti";
+      if (err && err != null) {
+        msg = err;
+        if (msg.isArray()) {
+          msg = msg[0].toString();
+        }
+      }
+      dispatch({ type: LIST_ERROR, payload: msg });
+    });
+};
+
 export const createHistories = form => dispatch => {
   dispatch({ type: CREATE });
   return new Promise((resolve, reject) => {
@@ -287,7 +308,7 @@ export const createHistories = form => dispatch => {
 export const updateHistories = (id, form) => dispatch => {
   dispatch({ type: CREATE });
   return new Promise((resolve, reject) => {
-    createHistory(id, form)
+    updateHistory(id, form)
       .then(result => {
         dispatch({ type: CREATE_SUCCESS });
         message.success("Berhasil Memperbarui");
