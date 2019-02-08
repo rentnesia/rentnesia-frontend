@@ -41,7 +41,7 @@ const initialState = {
       description: "",
       label: "",
       price_per_day: "",
-      status: "",
+      status: "available",
       picture: "",
       product_type_id: null
     },
