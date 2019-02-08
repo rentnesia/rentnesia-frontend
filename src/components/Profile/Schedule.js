@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
+import dateFns from "date-fns";
 
 import { listHistoriesByUserId, listHistories } from "../../modules/history";
 
@@ -32,21 +32,40 @@ class Schedule extends Component {
       <Row>
         <Col>
           <Card className="dashboard-empty-appointment">
+            <CardTitle className="card-title-items">{}</CardTitle>
             {data ? (
-              <table className="table table-responsive">
+              <table className="table table-striped">
                 <thead>
                   <tr>
+                    <th>Item</th>
                     <th>StartDate</th>
                     <th>EndDate</th>
                     <th>Location</th>
-                    <th>Item</th>
-                    <th>Item</th>
+                    <th>Renter</th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {data.map((item, i) => (
                     <tr key={i}>
-                      <td>{item.startDate}</td>
+                      <td>{item.item.name}</td>
+                      <td>{dateFns.format(item.startDate, "DD/MMM/YYYY")}</td>
+                      <td>{dateFns.format(item.endDate, "DD/MMM/YYYY")}</td>
+                      <td>{item.location || "Not Set"}</td>
+                      <td>{item.user.first_name}</td>
+                      <td>
+                        <span
+                          className={`badge badge-${
+                            item.status === "success"
+                              ? item.status === "waiting"
+                                ? "warning"
+                                : "success"
+                              : "danger"
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
