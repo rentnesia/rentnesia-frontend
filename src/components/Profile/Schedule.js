@@ -40,6 +40,7 @@ class Schedule extends Component {
                 <table className="table table-striped">
                   <thead>
                     <tr>
+                      <th width="50px">No.</th>
                       <th>Item</th>
                       <th>StartDate</th>
                       <th>EndDate</th>
@@ -51,6 +52,7 @@ class Schedule extends Component {
                   <tbody className="table-history">
                     {data.map((item, i) => (
                       <tr key={i}>
+                        <td width="50px">{i + 1}</td>
                         <td>{item.item.name}</td>
                         <td>{dateFns.format(item.startDate, "DD/MMM/YYYY")}</td>
                         <td>{dateFns.format(item.endDate, "DD/MMM/YYYY")}</td>

@@ -149,21 +149,34 @@ class AddItem extends Component {
                       onSuccess={this.handleImageChange}
                       render={({ onPick }) => (
                         <button
-                          className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
+                          className="btn btn-sm btn-animate btn-animate-side-right btn-secondary"
                           onClick={onPick}
                         >
-                          Add image <i className="fas fa-plus" />
+                          <span>
+                            <i
+                              className="icon fas fa-camera-retro"
+                              aria-hidden="true"
+                            />{" "}
+                            Add Image
+                          </span>
                         </button>
                       )}
                     />
                   </div>
-
-                  <button
-                    className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
-                    type="submit"
-                  >
-                    Submit
-                  </button>
+                  <div className="d-flex justify-content-end">
+                    <button
+                      className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
+                      type="submit"
+                    >
+                      <span>
+                        <i
+                          className="icon fas fa-camera-retro"
+                          aria-hidden="true"
+                        />
+                        Submit
+                      </span>
+                    </button>
+                  </div>
                 </Form>
               </TabPane>
             </TabContent>

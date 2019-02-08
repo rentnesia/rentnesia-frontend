@@ -55,13 +55,16 @@ class List extends Component {
           <Col>
             <Card className="dashboard-empty-items">
               <CardBody>
-                <CardTitle className="card-title-items">
+                <CardTitle className="card-title-items d-flex justify-content-between">
                   <span>Your Items ({total})</span>
                   <button
-                    className="btn btn-sm btn-danger"
+                    className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
                     onClick={this.toggleModal}
                   >
-                    Add Item
+                    <span>
+                      <i className="icon fas fa-plus" aria-hidden="true" />
+                      Add Item
+                    </span>
                   </button>
                 </CardTitle>
                 {data ? (
