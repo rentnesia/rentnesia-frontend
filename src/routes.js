@@ -18,11 +18,11 @@ const Routes = () => (
       path={`${process.env.PUBLIC_URL}/user/profile`}
       component={Profile}
     />
-    <Route
+    {/* <Route
       exact
       path={`${process.env.PUBLIC_URL}/checkout`}
       component={Checkout}
-    />
+    /> */}
     <Route
       exact
       path={`${process.env.PUBLIC_URL}/items/:category`}
