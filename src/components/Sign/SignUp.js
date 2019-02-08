@@ -78,7 +78,6 @@ class SignIn extends Component {
             <div className="md-form">
               <Input
                 type="text"
-                className="form-control"
                 name="first_name"
                 placeholder="First name"
                 onChange={this.handleInputChange}
