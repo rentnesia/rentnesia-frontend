@@ -70,6 +70,11 @@
   .formContainer {
     padding: 25px 0;
     padding-right: 20px;
+
+    & > .md-form {
+      margin-top: 0 !important;
+    }
+
     small {
       color: rgb(189, 189, 189);
       font-size: 10px;
