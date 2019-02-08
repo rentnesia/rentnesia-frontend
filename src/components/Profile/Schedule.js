@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
 
 import { listHistoriesByUserId, listHistories } from "../../modules/history";
