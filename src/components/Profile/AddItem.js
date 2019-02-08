@@ -13,15 +13,19 @@ import {
   TabContent,
   TabPane
 } from "reactstrap";
-import { message } from "antd";
+import { message, Select } from "antd";
 import ImagePicker from "filestack-react";
 
 import { createItems, setForm } from "../../modules/item";
+import { listProductTypes } from "../../modules/product_type";
+
+const Option = Select.Option;
 
 class AddItem extends Component {
   static propTypes = {
     state: PropTypes.object,
-    createItems: PropTypes.func
+    createItems: PropTypes.func,
+    listProductTypes: PropTypes.func
   };
 
   static defaultProps = {
@@ -31,6 +35,10 @@ class AddItem extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    this.props.listProductTypes();
   }
 
   handleSubmit = async e => {
@@ -71,6 +79,10 @@ class AddItem extends Component {
     this.props.setForm("picture", picture);
   };
 
+  handleSelectChange = value => {
+    this.props.setForm("product_type_id", value);
+  };
+
   render() {
     return (
       <Modal
@@ -93,7 +105,7 @@ class AddItem extends Component {
             <Nav tabs className="navTabs">
               <NavItem className="switchNav_Item">
                 <NavLink id="switchNav_Item_Active" className="active">
-                  Sign up
+                  Add Item
                   <div className="small-border-section" />
                 </NavLink>
               </NavItem>
@@ -118,14 +130,14 @@ class AddItem extends Component {
                       onChange={this.handleInputChange}
                     />
                   </div>
-                  <div className="md-form">
+                  {/* <div className="md-form">
                     <Input
                       type="text"
                       name="label"
-                      placeholder="Create a Password"
+                      placeholder="Label(ex:)"
                       onChange={this.handleInputChange}
                     />
-                  </div>
+                  </div> */}
                   <div className="md-form">
                     <Input
                       type="number"
@@ -142,7 +154,19 @@ class AddItem extends Component {
                       disabled
                     />
                   </div>
-
+                  <div className="md-form">
+                    <Select
+                      showSearch
+                      placeholder="Select a Product Type"
+                      onChange={this.handleSelectChange}
+                    >
+                      {this.props.state.product_type.map((item, i) => (
+                        <Option key={i} value={item.id}>
+                          {item.name}
+                        </Option>
+                      ))}
+                    </Select>
+                  </div>
                   <div className="md-form">
                     <ImagePicker
                       apikey={process.env.REACT_APP_FILESTACK_API_KEY}
@@ -189,7 +213,8 @@ class AddItem extends Component {
 
 const _state = state => ({
   state: {
-    items: state.item
+    items: state.item,
+    product_type: state.product_type.list.data
   }
 });
 
@@ -197,7 +222,8 @@ const _action = dispatch =>
   bindActionCreators(
     {
       createItems,
-      setForm
+      setForm,
+      listProductTypes
     },
     dispatch
   );

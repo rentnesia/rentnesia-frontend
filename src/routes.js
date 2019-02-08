@@ -6,7 +6,7 @@ import Home from "./views/Home";
 import Profile from "./views/Profile";
 import Items from "./views/Items";
 import SelectedItem from "./views/SelectedItem";
-import Checkout from "./views/Checkout";
+// import Checkout from "./views/Checkout";
 
 const Routes = () => (
   <div>
