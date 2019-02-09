@@ -29,7 +29,7 @@ class Header extends Component {
     push: PropTypes.func,
     listCategories: PropTypes.func,
     listItems: PropTypes.func,
-    listProductsById: propTypes.func
+    listProductsById: PropTypes.func
   };
 
   static defaultProps = {
