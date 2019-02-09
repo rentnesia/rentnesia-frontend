@@ -4,13 +4,14 @@ import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 import { goBack } from "connected-react-router";
 import PropTypes from "prop-types";
-import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import { Modal, ModalBody, ModalFooter } from "reactstrap";
 import { message } from "antd";
+import { distanceInWords } from "date-fns";
 
 // import t from "typy";
-import axios from "axios"
+import axios from "axios";
 
-import { Input } from "reactstrap"
+import { Input } from "reactstrap";
 import Shell from "../components/Shell";
 
 import { getItemById } from "../modules/item";
@@ -28,13 +29,14 @@ class SelectedItem extends Component {
   };
 
   state = {
-    location: null,
-    startDate: null,
-    endDate: null,
+    location: "",
+    startDate: "",
+    distanceDate: "",
+    endDate: "",
     disc_week: 10,
     disc_month: 22,
-    modal: false
-
+    modalCon: false,
+    modalOrder: false
   };
 
   componentDidMount() {
@@ -43,38 +45,73 @@ class SelectedItem extends Component {
   }
 
   handleGoBack = params => {
-    console.log(params);
     // this.props.goBack(`${process.env.PUBLIC_URL}/items/${category}`);
   };
 
-  handleClick = (e) => {
-    e.preventDefault()
-    const itemId = this.props.match.params.itemId
-    const userId = sessionStorage.getItem('userIdDecrypted');
+  handleClick = e => {
+    e.preventDefault();
+    let distance = parseInt(
+      distanceInWords(this.state.startDate, this.state.endDate).split(" ")[0]
+    );
+    this.setState({
+      distanceDate: distance
+    });
+    const body = {
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      location: this.state.location
+    };
+
+    if (body.location.length <= 0) {
+      message.error("Location wajib diisi!");
+    } else if (!body.startDate) {
+      message.error("StartDate wajib diisi!");
+    } else if (!body.endDate) {
+      message.error("EndDate wajib diisi!");
+    } else {
+      this.setState({
+        modalOrder: true
+      });
+    }
+  };
+
+  handleChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleModalCon = () => {
+    this.setState({ modalCon: !this.state.modalCon });
+  };
+
+  handleModalOrder = () => {
+    this.setState({ modalOrder: !this.state.modalOrder });
+  };
+
+  handleModalOrderClick = () => {
+    const itemId = this.props.match.params.itemId;
+    const userId = sessionStorage.getItem("userIdDecrypted");
 
     const body = {
-      "startDate": this.state.startDate,
-      "endDate": this.state.startDate,
-      "item_id": parseInt(itemId),
-      "renter_id": parseInt(userId),
-      "location": this.state.location,
-      "status": "waiting"
-    }
+      startDate: this.state.startDate,
+      endDate: this.state.endDate,
+      item_id: parseInt(itemId),
+      renter_id: parseInt(userId),
+      location: this.state.location,
+      status: "waiting"
+    };
 
-    axios.post(`${process.env.REACT_APP_API_URL}/api/v1/history`, body).then((res) => {
-      this.setState({ modal: true })
-    }).catch((err) => {
-      message.error("First Name wajib diisi!");
-    })
-  }
-
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/v1/history`, body)
+      .then(res => {
+        message.success("Sukses Berhasil!");
+      })
+      .catch(err => {
+        message.error("Field wajib diisi!");
+      });
+  };
 
   render() {
     const data = this.props.state.detail.data;
-    console.log(data)
 
     return (
       <Shell>
@@ -101,7 +138,7 @@ class SelectedItem extends Component {
                 <div className="col-7">
                   <img
                     className="img-item"
-                    src={`/images/${item.picture}`}
+                    src={`${item.picture}`}
                     alt={item.name}
                   />
                   {/* <div className="row mt-20px">
@@ -215,16 +252,6 @@ class SelectedItem extends Component {
                       className="btn btn-block btn-animate btn-animate-vertical btn-danger"
                       onClick={this.handleClick}
                     >
-                      <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-                        <ModalBody>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                        </ModalBody>
-                        <ModalFooter>
-                          <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-                          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                        </ModalFooter>
-                      </Modal>
                       <span>
                         RENT NOW
                         <i
@@ -237,6 +264,113 @@ class SelectedItem extends Component {
                 </div>
               </div>
             </div>
+            <Modal
+              isOpen={this.state.modalOrder}
+              toggle={this.handleModalOrder}
+              size="md"
+              centered
+            >
+              {/* <ModalHeader toggle={this.toggle}>Modal title</ModalHeader> */}
+              <ModalBody className="py-30px">
+                <h3 className="mt-20px mb-30px">Checkout</h3>
+                <table className=" table table-striped w-100">
+                  {data.map((item, i) => (
+                    <tbody key={i}>
+                      <tr>
+                        <td>Name Item</td>
+                        <td className="text-w600">{item.name}</td>
+                      </tr>
+                      <tr>
+                        <td>Price Per Day</td>
+                        <td className="text-w600">IDR {item.price_per_day}</td>
+                      </tr>
+                      <tr>
+                        <td>Date Rent</td>
+                        <td className="text-w600">
+                          {this.state.startDate}{" "}
+                          <i className="fas fa-arrow-right text-w-400 text-size-12" />{" "}
+                          {this.state.endDate}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Distance Rent</td>
+                        <td className="text-w600">{this.state.distanceDate}</td>
+                      </tr>
+                      <tr>
+                        <td>Total</td>
+                        <td className="text-size-18 text-w600">
+                          IDR {this.state.distanceDate * item.price_per_day}
+                        </td>
+                      </tr>
+                    </tbody>
+                  ))}
+                </table>
+              </ModalBody>
+              <ModalFooter>
+                <button
+                  className="btn btn-sm btn-animate btn-animate-side-right btn-secondary"
+                  onClick={() => {
+                    this.handleModalOrder();
+                  }}
+                >
+                  <span>
+                    Cancel
+                    <i className="icon fas fa-times" aria-hidden="true" />
+                  </span>
+                </button>
+                <button
+                  className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
+                  onClick={() => {
+                    this.handleModalCon();
+                    this.handleModalOrder();
+                  }}
+                >
+                  <span>
+                    Next
+                    <i className="icon fas fa-arrow-right" aria-hidden="true" />
+                  </span>
+                </button>
+              </ModalFooter>
+            </Modal>
+            <Modal
+              isOpen={this.state.modalCon}
+              toggle={this.handleModalCon}
+              size="md"
+              centered
+            >
+              {/* <ModalHeader toggle={this.toggle}>Modal title</ModalHeader> */}
+              <ModalBody>
+                <div
+                  className="w-100 d-flex justify-content-center"
+                  style={{ height: "200px" }}
+                >
+                  <img
+                    src="/images/article/red_store_items.svg"
+                    alt="delivered"
+                    width="50%"
+                  />
+                </div>
+                <div className="w-100 text-center">
+                  <h5>Congratulations!</h5>
+                  <h6>
+                    Within 3 days the item will be sent according to location
+                  </h6>
+                </div>
+              </ModalBody>
+              <ModalFooter>
+                <button
+                  className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
+                  onClick={() => {
+                    this.handleModalCon();
+                  }}
+                >
+                  <span>
+                    Close
+                    <i className="icon fas fa-times" aria-hidden="true" />
+                  </span>
+                </button>
+              </ModalFooter>
+            </Modal>
           </div>
         ))}
       </Shell>

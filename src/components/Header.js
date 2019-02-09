@@ -40,8 +40,8 @@ class Header extends Component {
     categories: [
       "furniture.png",
       "electronics.png",
-      "apparel.png",
       "vehicle.png",
+      "apparel.png",
       "appliances.png",
       "kids.png"
     ]
@@ -152,9 +152,9 @@ class Header extends Component {
                   </div>
                 </li>
                 <li className="nav-item">
-                  <a href="#" className="nav-link">
+                  <span className="nav-link">
                     <h6 className="fas fa-shopping-cart" aria-hidden="true" />
-                  </a>
+                  </span>
                 </li>
                 <li className="nav-item">
                   {login ? (

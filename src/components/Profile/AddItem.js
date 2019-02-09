@@ -16,7 +16,7 @@ import {
 import { message, Select } from "antd";
 import ImagePicker from "filestack-react";
 
-import { createItems, setForm } from "../../modules/item";
+import { createItems, setForm, listItemByUsers } from "../../modules/item";
 import { listProductTypes } from "../../modules/product_type";
 
 const Option = Select.Option;
@@ -25,7 +25,8 @@ class AddItem extends Component {
   static propTypes = {
     state: PropTypes.object,
     createItems: PropTypes.func,
-    listProductTypes: PropTypes.func
+    listProductTypes: PropTypes.func,
+    listItemByUsers: PropTypes.func
   };
 
   static defaultProps = {
@@ -46,22 +47,21 @@ class AddItem extends Component {
     const {
       name,
       description,
-      label,
       price_per_day,
       picture
-    } = this.props.state.items.create.form;
+    } = this.props.state.items.form;
+    let id = sessionStorage.getItem("userIdDecrypted");
     if (name.length <= 0) {
       message.error("Name wajib diisi!");
     } else if (description.length <= 0) {
       message.error("Description wajib diisi!");
-    } else if (label.length <= 0) {
-      message.error("Label wajib diisi!");
     } else if (price_per_day.length <= 0) {
       message.error("Price per day wajib diisi!");
     } else if (!picture) {
       message.error("Picture wajib diisi!");
     } else {
-      this.props.createItems(this.props.state.item.create.form);
+      this.props.createItems(this.props.state.items.form);
+      this.props.listItemByUsers(id);
       await this.props.toggle();
     }
   };
@@ -80,7 +80,11 @@ class AddItem extends Component {
   };
 
   handleSelectChange = value => {
-    this.props.setForm("product_type_id", value);
+    let id = sessionStorage.getItem("userIdDecrypted");
+    if (id) {
+      this.props.setForm("product_type_id", value);
+      this.props.setForm("userId", id);
+    }
   };
 
   render() {
@@ -213,7 +217,7 @@ class AddItem extends Component {
 
 const _state = state => ({
   state: {
-    items: state.item,
+    items: state.item.create,
     product_type: state.product_type.list.data
   }
 });
@@ -223,7 +227,8 @@ const _action = dispatch =>
     {
       createItems,
       setForm,
-      listProductTypes
+      listProductTypes,
+      listItemByUsers
     },
     dispatch
   );

@@ -9026,11 +9026,6 @@ react-aria-offcanvas@^1.1.10:
     prop-types "^15.6.1"
     run-event-handler-once "^1.0.0"
 
-react-bootstrap-daterangepicker@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/react-bootstrap-daterangepicker/-/react-bootstrap-daterangepicker-4.1.0.tgz#7133e9a959a42e18b49a0aea50a48c31b88aa7d8"
-  integrity sha512-BZwwRaWcUDZVVgzQBtbmnbV1jyNNlfI5v7Jxb9FNEJ9FW8m+hzJgDFUMUlvz3VKCe5JNKcv5fKBizIDFSIUu+A==
-
 react-bootstrap-datetimerangepicker@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/react-bootstrap-datetimerangepicker/-/react-bootstrap-datetimerangepicker-2.0.4.tgz#ef167d66178ba75a2640bfa189526229f046aef3"

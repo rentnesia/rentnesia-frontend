@@ -54,11 +54,18 @@ class Result extends Component {
                     this.props.getItemById(item.id);
                   }}
                 >
-                  <img
-                    src={`/images/items/${item.picture}`}
-                    className="card-img-top"
-                    alt={item.name}
-                  />
+                  <div
+                    className="d-flex justify-content-center align-items-center"
+                    style={{ height: "150px", maxHeight: "150px" }}
+                  >
+                    <div className="card-img-top-parent">
+                      <img
+                        src={`${item.picture}`}
+                        className="card-img-top"
+                        alt={item.name}
+                      />
+                    </div>
+                  </div>
                   <div className="card-body text-center">
                     <h6 className="card-title">{item.name}</h6>
                     <p className="card-text text-size-12">
