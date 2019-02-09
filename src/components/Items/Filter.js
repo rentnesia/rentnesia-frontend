@@ -27,7 +27,7 @@ class Filter extends Component {
     const { target } = e;
     const { value } = target;
 
-    this.props.listItems("DESC", "", value);
+    this.props.listItems("DESC", "", "", value);
   };
 
   render() {
