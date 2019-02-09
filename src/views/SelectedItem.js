@@ -362,6 +362,7 @@ class SelectedItem extends Component {
                   className="btn btn-sm btn-animate btn-animate-side-right btn-danger"
                   onClick={() => {
                     this.handleModalCon();
+                    this.handleModalOrderClick();
                   }}
                 >
                   <span>
