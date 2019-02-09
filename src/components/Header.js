@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router-dom";
 
 import { logout } from "../modules/login";
+import { listItems } from "../modules/item";
 import { listCategories } from "../modules/category";
 
 import Sign from "./Sign";
@@ -25,7 +26,8 @@ class Header extends Component {
     state: PropTypes.object,
     logout: PropTypes.func,
     push: PropTypes.func,
-    listCategories: PropTypes.func
+    listCategories: PropTypes.func,
+    listItems: PropTypes.func
   };
 
   static defaultProps = {
@@ -130,6 +132,10 @@ class Header extends Component {
                             pathname: `/items/${item.name}`,
                             state: { id: `${item.id}` }
                           }}
+                          onClick={() => {
+                            this.props.listItems("DESC", "", item.id);
+                            this.toggleDropdownCategory();
+                          }}
                         >
                           <div>
                             <img
@@ -151,11 +157,11 @@ class Header extends Component {
                     <h6 className="fas fa-search" aria-hidden="true" />
                   </div>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <span className="nav-link">
                     <h6 className="fas fa-shopping-cart" aria-hidden="true" />
                   </span>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   {login ? (
                     <Dropdown
@@ -257,7 +263,8 @@ const _action = dispatch =>
     {
       logout,
       push,
-      listCategories
+      listCategories,
+      listItems
     },
     dispatch
   );
