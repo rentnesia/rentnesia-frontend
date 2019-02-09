@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../modules/login";
 import { listItems } from "../modules/item";
 import { listCategories } from "../modules/category";
+import { listProductsById } from "../modules/product_type";
 
 import Sign from "./Sign";
 import Search from "./Search";
@@ -27,7 +28,8 @@ class Header extends Component {
     logout: PropTypes.func,
     push: PropTypes.func,
     listCategories: PropTypes.func,
-    listItems: PropTypes.func
+    listItems: PropTypes.func,
+    listProductsById: propTypes.func
   };
 
   static defaultProps = {
@@ -134,6 +136,7 @@ class Header extends Component {
                           }}
                           onClick={() => {
                             this.props.listItems("DESC", "", item.id);
+                            this.props.listProductsById(item.id);
                             this.toggleDropdownCategory();
                           }}
                         >
@@ -264,7 +267,8 @@ const _action = dispatch =>
       logout,
       push,
       listCategories,
-      listItems
+      listItems,
+      listProductsById
     },
     dispatch
   );
